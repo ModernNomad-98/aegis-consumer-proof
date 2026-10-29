@@ -20,6 +20,21 @@ The verified aggregate is
 `12ad18e157ee0ed91ff174465d0adf65cca3430a6a29836d363b885c48bb867c` over 3 rows and
 251 serialized bytes, as recorded in `docs/evidence/release-readiness/A.md` section 4.
 
+## Release B
+
+| Artifact | SHA-256 | Bytes | Purpose |
+| --- | --- | --- | --- |
+| `docs/evidence/release-readiness/B.md` | `5cf82dfcbfa6a9f81ce138bcbfd9dc89b6810151489ae30de5d2067d23e36b9e` | 12184 | RV-3 readiness record for release B (RP-D-14): the eight required fields, the build run and artifact, known UNRUN, the release A rollback source with deployment `7401326753`, and the authority line stating that deployment requires the SDP-1 item 4 conditions at the dispatch commit plus the owner record. |
+
+The retained bundle is deliberately not hashed here. `docs/evidence/releases/B/manifest.txt`
+already binds the three retained files by byte count, LF count and SHA-256, and the
+deploy gate recomputes all of it — per-file digests, LF counts, serialized length and the
+aggregate — from the retained bytes on every deploy. Restating those values in this index
+would create a second, weaker copy that could drift from the bytes it claims to describe.
+The verified aggregate is
+`36bc4407514265db0bd0fcaa9dde87ad2db18373ed5646fd178ec97af5a9ba4a` over 3 rows and
+251 serialized bytes, as recorded in `docs/evidence/release-readiness/B.md` section 4.
+
 ## Deployments
 
 | Artifact | SHA-256 | Bytes | LF | Purpose |
