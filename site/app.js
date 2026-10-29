@@ -1,4 +1,6 @@
-/* Checklist — Release A.
+/* Checklist — Release B.
+   Adds a derived completed/total count. The storage shape is unchanged from release A:
+   no count is stored, no field is added and no migration runs.
    Plain browser JavaScript. No dependencies, no network calls. */
 (function () {
   'use strict';
@@ -33,6 +35,20 @@
 
   function seedItems() {
     return cloneItems(SEEDS);
+  }
+
+  function completedCount() {
+    var completed = 0;
+    for (var i = 0; i < state.items.length; i += 1) {
+      if (state.items[i].completed) {
+        completed += 1;
+      }
+    }
+    return completed;
+  }
+
+  function countText() {
+    return completedCount() + ' of ' + state.items.length + ' completed';
   }
 
   function isPlainObject(value) {
@@ -299,6 +315,7 @@
     var rawBox = byId('raw-data');
     var storageText = byId('storage-error-text');
     var input = byId('new-label');
+    var countBox = byId('count');
 
     if (!list) {
       return;
@@ -311,6 +328,10 @@
     form.hidden = isError;
     storageError.hidden = !isError;
     if (isError) {
+      if (countBox) {
+        countBox.textContent = '';
+        countBox.hidden = true;
+      }
       storageText.textContent = state.errorText;
       rawBox.textContent = state.raw === null ? '(not available)' : state.raw;
       errorBox.hidden = true;
@@ -319,6 +340,10 @@
       errorBox.hidden = !errorBox.textContent;
       noticeBox.textContent = state.notice;
       noticeBox.hidden = !state.notice;
+      if (countBox) {
+        countBox.textContent = countText();
+        countBox.hidden = false;
+      }
       if (input) {
         input.disabled = false;
       }

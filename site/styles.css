@@ -55,6 +55,11 @@ body {
   color: var(--muted);
 }
 
+.count {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
 .new-item {
   margin-bottom: 1rem;
 }
