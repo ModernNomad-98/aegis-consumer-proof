@@ -159,7 +159,7 @@ deployment failure: the run succeeded, the deployment status is `success`, the U
 | 2026-10-29T01:09:05Z | HEAD | **200** |
 | 2026-10-29T01:09:05Z | GET | **200**, 1595 bytes |
 | 2026-10-29T01:10:49Z | HEAD | **200** |
-| 2026-10-29T01:19:15Z (while this record was written) | GET | **200**, 1595 bytes |
+| 2026-10-29T01:21:45Z (after the commit that added this record) | GET | **200**, 1595 bytes |
 
 Response headers at 01:09:05Z: `Content-Type: text/html; charset=utf-8`,
 `Content-Length: 1595`, `Last-Modified: Thu, 29 Oct 2026 01:08:10 GMT`,
@@ -234,8 +234,9 @@ These were not executed. They are not "passed"; they are unexecuted.
 | Environment `github-pages` | 1 branch policy, 0 required reviewers | unchanged |
 | Head of `main` | `7591c657…` | advanced after the dispatch by content-only commits |
 
-`main` advanced after the dispatch — `7591c657…` → `1e754df7…` → `66c602bd…` → this
-record's own commit: SDP-1 registration, the SDP-1a clarification and this record. None of
+`main` advanced after the dispatch — `7591c657…` → `1e754df7…` → `66c602bd…` → the commit
+that added this record — by content-only evidence commits: SDP-1 registration, the SDP-1a
+clarification and this record. None of
 those commits created a deployment, a Pages build or a workflow run — the workflow has no
 push trigger — and none changed the workflow, the retained bundle or `site/`. The deployment
 stays bound to `7591c657…`: deployment `sha` = run head SHA = dispatch commit.

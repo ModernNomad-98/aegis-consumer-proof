@@ -24,7 +24,7 @@ The verified aggregate is
 
 | Artifact | SHA-256 | Bytes | LF | Purpose |
 | --- | --- | --- | --- | --- |
-| `docs/evidence/deployments/A.md` | `444d23f64850dd4e500775f48201c31bdcef94da797e6369ef0d7ce8111d564b` | 13414 | 262 | Release A deployment record: deployment `7401326753` (`github-pages`, `main`, sha `7591c657…`) with status `20870583731` `success`; run `40798505740` `success` with deploy job `123200676832` `success` and build job `123200678387` `skipped`; `environment_url` and HTTP 404 → 200; served bytes byte-identical to the retained bundle and reproducing rows=3 / 251 serialized bytes / aggregate `12ad18e1…`; no Pages build record exposed under `build_type: workflow` (none fabricated); the owner R-A authorization and the irreversibility note. |
+| `docs/evidence/deployments/A.md` | `6877c4a4c084bae83044fadbb31b4c80702e065de8c19e1dc631472bc9624f3e` | 13470 | 263 | Release A deployment record: deployment `7401326753` (`github-pages`, `main`, sha `7591c657…`) with status `20870583731` `success`; run `40798505740` `success` with deploy job `123200676832` `success` and build job `123200678387` `skipped`; `environment_url` and HTTP 404 → 200; served bytes byte-identical to the retained bundle and reproducing rows=3 / 251 serialized bytes / aggregate `12ad18e1…`; no Pages build record exposed under `build_type: workflow` (none fabricated); the owner R-A authorization and the irreversibility note. |
 
 ## Owner decisions
 
