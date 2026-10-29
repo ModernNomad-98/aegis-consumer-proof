@@ -1,0 +1,28 @@
+Project Aegis - installed starter package, vendored copy
+=========================================================
+
+Source project:    Project Aegis
+Source repository: https://github.com/ModernNomad-98/Project-Aegis
+Source commit:     ffb040c7a363648856475280646bbd142dfabe4e
+Source tree:       88a5aee4ad928a49c2fb945032585843ec652da7
+Vendored path:     docs/evidence/consumer-readiness/installed-starter/pin-ffb040c7/
+
+This directory holds a copy of the 41-file installed starter package published
+by the Project Aegis project at the commit above. It is committed here under the
+owner's vendoring decision U8 (2026-10-28) and under these conditions:
+
+  1. every copied file is pinned to the one source commit named above;
+  2. HASH-MANIFEST.md and HASH-MANIFEST.tsv record the path, byte count, LF count
+     and SHA-256 of every copied file;
+  3. LICENSE (verbatim from that commit) and this notice travel with the bytes;
+  4. the copied bytes are unmodified. Do not edit them here. Any divergence from
+     the pinned blobs is a drift finding to be reported, never a local fix.
+
+Copyright 2026 The Project Aegis Authors. The Project Aegis names identify the
+source project and its maintainer; they are used here only to attribute the
+source, and nothing in this directory implies endorsement by, or affiliation
+with, that maintainer.
+
+License: Apache License 2.0. See LICENSE in this directory - the verbatim LICENSE
+file from the source commit above. It covers the copied Project Aegis bytes only,
+not this repository's own content.
