@@ -14,6 +14,20 @@ The date on this record is the date the policy was given, not the date of transc
 **Status.** In force from 2026-10-28 until the owner revises or withdraws it. It changes
 when the owner must be asked; it does not change what must be proven.
 
+## Redaction notice
+
+This is the public copy of the owner's SDP-1 record. Source-project identifiers have been
+replaced with neutral descriptions under the owner firewall: source pull-request numbers,
+approval-register grant ids, and the source repository branch reference. The substitutions
+change no policy wording, numbering, date or obligation; each one is listed in the
+classification record. Where the owner's text itself quoted an identifier, the quotation is
+reproduced with the identifier replaced and marked "(reference redacted)".
+
+The verbatim owner text is retained in a local, non-public owner record outside this
+repository. Redaction is **forward-only**: it does not rewrite history. Earlier commits —
+the first registration `1e754df7`, the alignment commit `66c602bd`, and `15a83b20` — still
+contain the unredacted text, as does the parent tree of this commit.
+
 ## 1. Policy
 
 1. **Fail-closed default = adopted.** When a fail-closed default is proposed and the owner
@@ -25,9 +39,9 @@ when the owner must be asked; it does not change what must be proven.
    closure claim) as the answer and log the gap as a plan defect. A-13: YES, three-seed on
    cleared storage is expected behavior; prove with CP-06; observed != expected is FAIL.
 3. **Licensing/vendoring (U8-class):** YES — Aegis package bytes may be committed to the
-   public consumer repo when pinned to one exact Aegis main SHA, with a committed hash
-   manifest, LICENSE and attribution travelling with the bytes, and zero edits; divergence
-   is a drift finding, not a local fix.
+   public consumer repo when pinned to one exact commit SHA on the source repository's main
+   branch, with a committed hash manifest, LICENSE and attribution travelling with the
+   bytes, and zero edits; divergence is a drift finding, not a local fix.
 4. **Release steps R-B, R-RB1, R-RB2, R-EMPTY: pre-granted conditionally.** Each may
    dispatch without a new ask when (a) the previous step's evidence report is posted with
    observed values, (b) the committed deploy gate replays PASS at the dispatch commit and
@@ -41,8 +55,9 @@ when the owner must be asked; it does not change what must be proven.
    an exact-name human-granted invocation citing SDP-1 and the case id. Any invocation
    outside the case set is a per-ask decision.
 6. **Still requires the owner, no exceptions:** any repo settings change (including Pages
-   disable/unpublish), any spend, any action outside the frozen case set, any merge to
-   Project-Aegis main, U6 publication grant, #943, the capability card.
+   disable/unpublish), any spend, any action outside the frozen case set, any merge to the
+   source repository main branch, U6 publication grant, the parked identity-enforcement PR
+   (reference redacted), the capability card.
 7. **Evidence rule unchanged:** every pre-granted action produces the same
    observed-evidence report it would have produced under a per-ask grant. SDP-1 removes the
    wait, not the proof.
@@ -80,6 +95,7 @@ when the owner must be asked; it does not change what must be proven.
 | Consumer repository | `ModernNomad-98/aegis-consumer-proof` |
 | Registration | `docs/evidence/index.md` carries this file's SHA-256, byte count and LF count |
 | Supersedes | no earlier owner policy record in this repository |
+| Public copy | redacted 2026-10-28 under the owner firewall (see the Redaction notice); verbatim text retained locally; unredacted text remains in earlier commits `1e754df7`, `66c602bd` and `15a83b20` |
 
 ## 5. Clarification SDP-1a — item 6, merges (dated 2026-10-28)
 
@@ -94,11 +110,11 @@ instruction, agent transcription. It is not a GitHub comment and not a provider 
 
 **The clarification, transcribed.**
 
-1. "Any merge to Project-Aegis main" in item 6 means **any merge without an ACTIVE
-   approval-register grant**.
-2. Merges that cite an **ACTIVE APR grant** — `APR-140`, `APR-143`, and any later grant
-   the owner issues — proceed as before SDP-1: **fresh merger agent, re-derived grant
-   scope, hardened preflight, no Lead merge**.
+1. "Any merge to the source repository main branch" in item 6 means **any merge without an
+   ACTIVE approval-register grant**.
+2. Merges that cite an **ACTIVE approval-register grant** — that grant, and any later
+   grant the owner issues — proceed as before SDP-1: **fresh merger agent, re-derived
+   grant scope, hardened preflight, no Lead merge**.
 3. **Item 3 is not an exception; it is the normal path.** Item 4 and later work under those
    grants follow the same path without a new ask.
 4. **Owner-only remains:** a merge with no grant; a merge whose scope exceeds the cited
@@ -108,17 +124,19 @@ instruction, agent transcription. It is not a GitHub comment and not a provider 
 
 **Reader note (this record's annotation, not the owner's words).** "Item 3" here is the
 source project's remediation work item 3 — the merge authorization the owner gave in the
-same session for `#959` under `APR-140` — not item 3 of section 1 of this policy
-(licensing/vendoring, U8-class). The clarification says such an authorization is the normal
-path for a merge under an active grant, not a special exception to item 6.
+same session for a source-project pull request (reference redacted) under the active
+approval-register grant — not item 3 of section 1 of this policy (licensing/vendoring,
+U8-class). The clarification says such an authorization is the normal path for a merge
+under an active grant, not a special exception to item 6.
 
 **Effect on this repository.** No owner merge concerns
 `ModernNomad-98/aegis-consumer-proof`; this repository has no approval register entry, no
-APR grant and no merge-by-agent path. The clarification is recorded here because SDP-1 is
-registered here and the owner asked for it to stay one entry. Item 6's owner-only remainder
-is otherwise unchanged: every settings change (including Pages disable/unpublish), spend,
-an action outside the frozen case set, the U6 publication grant, `#943` and the capability
-card still need the owner, and so does any merge this clarification does not cover.
+approval-register grant and no merge-by-agent path. The clarification is recorded here
+because SDP-1 is registered here and the owner asked for it to stay one entry. Item 6's
+owner-only remainder is otherwise unchanged: every settings change (including Pages
+disable/unpublish), spend, an action outside the frozen case set, the U6 publication grant,
+the parked identity-enforcement PR (reference redacted) and the capability card still need
+the owner, and so does any merge this clarification does not cover.
 
 | Field | Value |
 | --- | --- |

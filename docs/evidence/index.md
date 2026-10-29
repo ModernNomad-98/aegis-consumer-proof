@@ -30,4 +30,11 @@ The verified aggregate is
 
 | Artifact | SHA-256 | Bytes | LF | Purpose |
 | --- | --- | --- | --- | --- |
-| `docs/evidence/owner-decisions/SDP-1.md` | `5a58d2ad1af3ad952f130341a3bed1df0f078c2a197ed390b0bca96380c15f11` | 7979 | 128 | Owner standing decision policy SDP-1, dated 2026-10-28, recorded as an owner instruction from the owner's session (not a GitHub comment): fail-closed timeout default; spec-question rule and A-13; licensing/vendoring; the conditional pre-grant for release steps R-B, R-RB1, R-RB2 and R-EMPTY; the trigger-scoped manual-only permission and its invocation log; the remainder that stays owner-only; and the unchanged evidence rule. The same entry also carries the dated **SDP-1a** clarification of item 6 (2026-10-28): "any merge to Project-Aegis main" means a merge without an ACTIVE approval-register grant; a merge citing an active grant (APR-140, APR-143 or a later grant) follows the pre-SDP-1 path; item 3 is the normal path, not an exception; the owner-only remainder is unchanged. |
+| `docs/evidence/owner-decisions/SDP-1.md` | `5a84295101890bfee134e094b76d0e584435944f8c7b633a8ae8aa1446708894` | 9321 | 146 | Owner standing decision policy SDP-1, dated 2026-10-28, recorded as an owner instruction from the owner's session (not a GitHub comment): fail-closed timeout default; spec-question rule and A-13; licensing/vendoring; the conditional pre-grant for release steps R-B, R-RB1, R-RB2 and R-EMPTY; the trigger-scoped manual-only permission and its invocation log; the remainder that stays owner-only; and the unchanged evidence rule. The same entry also carries the dated **SDP-1a** clarification of item 6 (2026-10-28): any merge to the source repository main branch means a merge without an ACTIVE approval-register grant; a merge citing an active approval-register grant follows the pre-SDP-1 path; item 3 is the normal path, not an exception; the owner-only remainder is unchanged. **Public copy redacted** under the owner firewall; see the redaction note below. |
+
+**Redaction note.** This row registers the public, redacted copy of SDP-1. Source-project
+identifiers (source pull-request numbers, approval-register grant ids and the source
+repository branch reference) were replaced with neutral descriptions; the file's own
+Redaction notice lists the categories. The verbatim owner text is retained in a local,
+non-public record. Redaction is forward-only: the unredacted text remains in earlier commits
+`1e754df7`, `66c602bd` and `15a83b20`.
