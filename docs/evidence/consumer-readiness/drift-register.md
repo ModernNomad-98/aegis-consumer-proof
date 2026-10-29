@@ -10,11 +10,19 @@
 
 | ID | Severity | Consumer record | Drift | Status |
 | --- | --- | --- | --- | --- |
-| D-01 | **HIGH** | `docs/evidence/owner-decisions/SDP-1.md` item 4; registered by `docs/evidence/index.md` | SDP-1 pre-grants R-EMPTY on conditions (a)–(d) alone. A1 §12 E12 records R-EMPTY **NOT GRANTED** with the DELETE-Pages primitive **UNVERIFIED**; plan S25 requires U5 **+ U7 or a recorded irreversible-by-decision acceptance** (disposition at S24b). | **Recorded — not exercised; not resolved.** |
+| D-01 | **HIGH** | `docs/evidence/owner-decisions/SDP-1.md` item 4; registered by `docs/evidence/index.md` | SDP-1 pre-grants R-EMPTY on conditions (a)–(d) alone. A1 §12 E12 records R-EMPTY **NOT GRANTED** with the DELETE-Pages primitive **UNVERIFIED**; plan S25 requires U5 **+ U7 or a recorded irreversible-by-decision acceptance** (disposition at S24b). | **Recorded — not exercised; not resolved.** **OWNER DECISION REQUIRED** — restated below. |
 | D-02 | **MEDIUM** | `docs/evidence/deployments/A.md` §2 | The "Recorded in" cell cited the R-A request (`item2-ra/R-A-REQUEST.md`) as recording the R-A answer and conditions (a)–(e); that file is the ask and contains neither. The answer and the full conditions (a)–(e) are recorded in the workspace owner decision record for R-A / A-13 / U8, which is not committed to this repository. | **Recorded — not exercised; not resolved.** The pointer cell is corrected in the same content commit as this register; the finding stays recorded until that commit is merged. |
 | D-03 | **LOW** | `docs/evidence/owner-decisions/SDP-1.md` item 5 | SDP-1 records a "trigger-scoped standing permission" for U4-class manual-only owners. A1 §12 E14 records U4 as **NOT GRANTED**, requiring a per-turn human exact-name invocation **and** the consumer-local register entry written first. | **Recorded — not exercised; not resolved.** |
 
 ## D-01 — R-EMPTY pre-granted without the U7 precondition (HIGH)
+
+> **OWNER DECISION REQUIRED — D-01 remains OPEN.** This restatement decides nothing and changes no status; it is written so the next STATUS can carry the decision without opening this register.
+>
+> **What it is —** SDP-1 item 4 pre-grants R-EMPTY on conditions (a)-(d) alone, while A1 §12 E12 records R-EMPTY **NOT GRANTED** — the DELETE-Pages primitive is UNVERIFIED — and plan S25 requires U5 plus **U7 or a recorded irreversible-by-decision acceptance** (disposition at S24b).
+>
+> **Why HIGH —** followed alone, item 4 authorizes an irreversible teardown or unpublish on four release-step conditions, none of which is the U7 disposition A1 requires; the two records answer the same step oppositely, and the permissive reading is the copy a consumer would follow.
+>
+> **Options and fail-closed default —** **(A)** amend SDP-1 item 4 to carve out R-EMPTY and require an S24b disposition before dispatch, closing D-01 as resolved; **(B)** record precedence without editing SDP-1 — A1 §12 E12 controls, and item 4 grants nothing for R-EMPTY until a disposition exists — closing D-01 as resolved by recorded precedence; **(C)** take no action — the **fail-closed default if the owner does not answer**: D-01 stays OPEN, R-EMPTY stays NOT GRANTED, and no R-EMPTY, teardown or unpublish may proceed on item 4 alone.
 
 **Evidence.**
 
