@@ -216,9 +216,12 @@ keeps serving the last successful deployment, so a failed B leaves A live. And r
 live content altogether is an unpublish/disable, which is a Pages settings change outside
 any release grant and needs its own authorization.
 
-A separate HIGH finding covers the R-EMPTY / teardown path: D-01 in
-`docs/evidence/consumer-readiness/drift-register.md` is **OWNER DECISION REQUIRED**, and no
-R-EMPTY, teardown or unpublish may proceed on SDP-1 item 4 alone.
+A separate HIGH finding covered the R-EMPTY / teardown path: D-01 in
+`docs/evidence/consumer-readiness/drift-register.md` is **RESOLVED** by the SDP-1b
+amendment recorded in `docs/evidence/owner-decisions/SDP-1.md` §6 (dated 2026-10-29). SDP-1
+item 4 no longer covers R-EMPTY: it is owner-only under item 6 and always a per-ask, with
+the pushed state restated in the ask. A1 §12 E12 remains **NOT GRANTED**, and it now agrees
+with SDP-1.
 
 ## 8. Authority
 
