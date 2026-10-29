@@ -39,7 +39,7 @@ The verified aggregate is
 
 | Artifact | SHA-256 | Bytes | LF | Purpose |
 | --- | --- | --- | --- | --- |
-| `docs/evidence/deployments/A.md` | `6877c4a4c084bae83044fadbb31b4c80702e065de8c19e1dc631472bc9624f3e` | 13470 | 263 | Release A deployment record: deployment `7401326753` (`github-pages`, `main`, sha `7591c657…`) with status `20870583731` `success`; run `40798505740` `success` with deploy job `123200676832` `success` and build job `123200678387` `skipped`; `environment_url` and HTTP 404 → 200; served bytes byte-identical to the retained bundle and reproducing rows=3 / 251 serialized bytes / aggregate `12ad18e1…`; no Pages build record exposed under `build_type: workflow` (none fabricated); the owner R-A authorization and the irreversibility note. |
+| `docs/evidence/deployments/A.md` | `09703accb7ba2e192ab31e8ae64aee2956638b55c3ce6a7b90a8f9061cd2a7c9` | 13752 | 263 | Release A deployment record: deployment `7401326753` (`github-pages`, `main`, sha `7591c657…`) with status `20870583731` `success`; run `40798505740` `success` with deploy job `123200676832` `success` and build job `123200678387` `skipped`; `environment_url` and HTTP 404 → 200; served bytes byte-identical to the retained bundle and reproducing rows=3 / 251 serialized bytes / aggregate `12ad18e1…`; no Pages build record exposed under `build_type: workflow` (none fabricated); the owner R-A authorization and the irreversibility note. The §2 "Recorded in" cell cites the workspace owner decision record for R-A / A-13 / U8 dated 2026-10-28 by path, 2,256 B and SHA-256 `1c47cf27…`, and states that the record is not committed to this repository (D-02 pointer correction under CP-02=A; this entry was recomputed from the corrected bytes). |
 
 ## Owner decisions
 
@@ -64,3 +64,9 @@ The 78-file bundle is bound by `docs/evidence/consumer-readiness/exports/item5-2
 `16532a341019c568fe9e8d2f54102283eebb6ba34b5538be46c0d2fa19b04f6c`) and, file by file, by
 `DERIVATIVE-MANIFEST.tsv` with before/after digests. Those per-file values are deliberately not
 restated here, for the reason given above; the row above binds the README only.
+
+## Consumer readiness
+
+| Artifact | SHA-256 | Bytes | LF | Purpose |
+| --- | --- | --- | --- | --- |
+| `docs/evidence/consumer-readiness/drift-register.md` | `e12e510e6df91910ff5ca0509837a93ce2af9fda966a049b4ac131f659a3de0a` | 10210 | 83 | CP-02 drift register against plan A1 §12 (owner decision CP-02=A, 2026-10-29): **D-01 (HIGH)** SDP-1 item 4 pre-grants R-EMPTY on conditions (a)–(d) alone, while A1 §12 E12 records R-EMPTY `NOT GRANTED` and plan S25 requires a U7 grant or a recorded irreversible-by-decision acceptance at S24b; **D-02 (MEDIUM)** the release A deployment record's "Recorded in" cell pointed at the R-A request, which is the ask and holds neither the answer nor conditions (a)–(e), with the pointer corrected in `docs/evidence/deployments/A.md` §2; **D-03 (LOW)** SDP-1 item 5 records a trigger-scoped standing permission where A1 §12 E14 records a per-turn, ungranted U4. All three are **recorded — not exercised; not resolved**: the register grants nothing, alters no policy and edits no SDP-1 content, and D-01/D-03 remain open for the owner or Lead. |
