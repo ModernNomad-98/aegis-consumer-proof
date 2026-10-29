@@ -20,11 +20,11 @@ when the owner must be asked; it does not change what must be proven.
    has not answered within 30 minutes of the STATUS carrying the ask, adopt the default,
    record "adopted by SDP-1 timeout", and continue. Never adopt a non-fail-closed option by
    timeout.
-2. **Spec questions (A-series).** Answer from the consumer plan's own design statements. If
+2. **Spec questions (A-series):** answer from the consumer plan's own design statements; if
    explicit, that is the answer; if silent, treat the fail-closed outcome (CP UNRUN, no
    closure claim) as the answer and log the gap as a plan defect. A-13: YES, three-seed on
    cleared storage is expected behavior; prove with CP-06; observed != expected is FAIL.
-3. **Licensing/vendoring (U8-class).** YES — Aegis package bytes may be committed to the
+3. **Licensing/vendoring (U8-class):** YES — Aegis package bytes may be committed to the
    public consumer repo when pinned to one exact Aegis main SHA, with a committed hash
    manifest, LICENSE and attribution travelling with the bytes, and zero edits; divergence
    is a drift finding, not a local fix.
@@ -43,7 +43,7 @@ when the owner must be asked; it does not change what must be proven.
 6. **Still requires the owner, no exceptions:** any repo settings change (including Pages
    disable/unpublish), any spend, any action outside the frozen case set, any merge to
    Project-Aegis main, U6 publication grant, #943, the capability card.
-7. **Evidence rule unchanged.** Every pre-granted action produces the same
+7. **Evidence rule unchanged:** every pre-granted action produces the same
    observed-evidence report it would have produced under a per-ask grant. SDP-1 removes the
    wait, not the proof.
 
