@@ -80,3 +80,49 @@ when the owner must be asked; it does not change what must be proven.
 | Consumer repository | `ModernNomad-98/aegis-consumer-proof` |
 | Registration | `docs/evidence/index.md` carries this file's SHA-256, byte count and LF count |
 | Supersedes | no earlier owner policy record in this repository |
+
+## 5. Clarification SDP-1a — item 6, merges (dated 2026-10-28)
+
+Same register entry. This is a dated clarification appended to SDP-1, not a second policy
+record: no new entry is added to `docs/evidence/index.md`, and items 1, 2, 3, 4, 5 and 7
+of section 1 stand exactly as written.
+
+**Source.** Owner clarification, typed by the owner in the owner's own session (chat) on
+**2026-10-28 at about 18:20 PDT**, transcribed by the agent that received it, and recorded
+in the workspace owner-decision record for SDP-1 dated 2026-10-28. Class: owner
+instruction, agent transcription. It is not a GitHub comment and not a provider record.
+
+**The clarification, transcribed.**
+
+1. "Any merge to Project-Aegis main" in item 6 means **any merge without an ACTIVE
+   approval-register grant**.
+2. Merges that cite an **ACTIVE APR grant** — `APR-140`, `APR-143`, and any later grant
+   the owner issues — proceed as before SDP-1: **fresh merger agent, re-derived grant
+   scope, hardened preflight, no Lead merge**.
+3. **Item 3 is not an exception; it is the normal path.** Item 4 and later work under those
+   grants follow the same path without a new ask.
+4. **Owner-only remains:** a merge with no grant; a merge whose scope exceeds the cited
+   grant; any change to CODEOWNERS / branch protection / auto-merge settings; and anything
+   else item 6 already lists.
+5. Everything else in SDP-1 and the R-A conditions stands unchanged.
+
+**Reader note (this record's annotation, not the owner's words).** "Item 3" here is the
+source project's remediation work item 3 — the merge authorization the owner gave in the
+same session for `#959` under `APR-140` — not item 3 of section 1 of this policy
+(licensing/vendoring, U8-class). The clarification says such an authorization is the normal
+path for a merge under an active grant, not a special exception to item 6.
+
+**Effect on this repository.** No owner merge concerns
+`ModernNomad-98/aegis-consumer-proof`; this repository has no approval register entry, no
+APR grant and no merge-by-agent path. The clarification is recorded here because SDP-1 is
+registered here and the owner asked for it to stay one entry. Item 6's owner-only remainder
+is otherwise unchanged: every settings change (including Pages disable/unpublish), spend,
+an action outside the frozen case set, the U6 publication grant, `#943` and the capability
+card still need the owner, and so does any merge this clarification does not cover.
+
+| Field | Value |
+| --- | --- |
+| Clarification | SDP-1a, dated 2026-10-28 |
+| Scope | item 6 (merges) only; items 1-5 and 7 unchanged |
+| Source class | owner instruction, transcribed from the owner's session message; not a GitHub comment |
+| Register entries added | none — this section is part of the SDP-1 entry |
