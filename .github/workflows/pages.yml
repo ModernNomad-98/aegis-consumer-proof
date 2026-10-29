@@ -116,6 +116,7 @@ jobs:
           PY
 
       - name: Retain the build artifact (no deployment)
+        id: upload
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # actions/upload-pages-artifact v3
         with:
           path: ${{ runner.temp }}/site
@@ -123,6 +124,7 @@ jobs:
 
       - name: State the build outcome
         run: |
+          echo "build_artifact_id=${{ steps.upload.outputs.artifact_id }}"
           echo "build mode complete: artifact retained, deployment not requested."
           echo "A build run that deploys is a defect; this job has no deploy step."
 
@@ -145,6 +147,13 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Record the candidate identity
+        run: |
+          echo "candidate_commit=$(git rev-parse HEAD)"
+          echo "candidate_tree=$(git rev-parse HEAD^{tree})"
+          echo "run_id=$GITHUB_RUN_ID run_attempt=$GITHUB_RUN_ATTEMPT release=$RELEASE"
+          echo "workflow_blob=$(git hash-object .github/workflows/pages.yml)"
+
       - name: Verify committed retained bytes against the committed manifest
         run: |
           set -euo pipefail
@@ -162,6 +171,12 @@ jobs:
           def fail(message):
               print("::error::" + message)
               sys.exit(1)
+
+          # Content gates copied verbatim from build mode. The manifest binds bytes,
+          # not policy; these checks are repeated here so a matching manifest cannot
+          # carry a CR byte or forbidden material past upload (plan section 3, step 4).
+          bad_name = re.compile(r"(?i)(^|/)(evals?|evals\.json|trigger-evals\.json|\.env[^/]*|id_rsa|id_ed25519|[^/]+\.(pem|key|p12|pfx))$")
+          bad_bytes = re.compile(rb"(BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|xox[baprs]-[A-Za-z0-9-]{10,})")
 
           if os.path.abspath(MANIFEST).startswith(os.path.abspath(SITE) + os.sep):
               fail("manifest must not live inside the retained distribution")
@@ -181,6 +196,8 @@ jobs:
           raw = open(MANIFEST, "rb").read()
           if raw.startswith(b"\xef\xbb\xbf"):
               fail("manifest has a UTF-8 BOM")
+          if b"\r" in raw:
+              fail("manifest has a CR byte; LF is required")
           text = raw.decode("utf-8")
           lines = [line for line in text.splitlines() if line.strip()]
           data_lines = [line for line in lines if not line.startswith("#")]
@@ -214,13 +231,20 @@ jobs:
               fail("manifest rows do not match the frozen allowlist")
 
           for path, nbytes, nlf, sha in recorded:
-              data = open(os.path.join(SITE, path), "rb").read()
+              path_on_disk = os.path.join(SITE, path)
+              data = open(path_on_disk, "rb").read()
               if len(data) != nbytes:
                   fail("byte count mismatch: " + path)
               if data.count(10) != nlf:
                   fail("LF count mismatch: " + path)
               if hashlib.sha256(data).hexdigest() != sha:
                   fail("SHA-256 mismatch: " + path)
+              if bad_name.search(path_on_disk.replace(os.sep, "/")):
+                  fail("forbidden material name in retained path: " + path)
+              if b"\r" in data:
+                  fail("CR byte in retained " + path + "; LF is required")
+              if bad_bytes.search(data):
+                  fail("forbidden material content in retained " + path)
 
           serialized = "".join("%s\t%d\t%d\t%s\n" % row for row in recorded).encode("utf-8")
           if len(serialized) != agg_bytes:
@@ -228,9 +252,11 @@ jobs:
           if hashlib.sha256(serialized).hexdigest() != agg_sha:
               fail("aggregate SHA-256 mismatch")
           print("manifest_verified release=%s rows=%d serialized_bytes=%d aggregate=%s" % (RELEASE, len(recorded), len(serialized), agg_sha))
+          print("content_gates_replayed release=%s files=%d cr_bytes=0 forbidden_material=0" % (RELEASE, len(recorded)))
           PY
 
       - name: Upload the verified retained bytes
+        id: upload
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # actions/upload-pages-artifact v3
         with:
           path: docs/evidence/releases/${{ inputs.release }}/site
@@ -243,5 +269,8 @@ jobs:
       - name: Record the deployment identity
         run: |
           echo "deployment_url=${{ steps.deployment.outputs.page_url }}"
+          echo "deploy_artifact_id=${{ steps.upload.outputs.artifact_id }}"
+          echo "candidate_commit=$(git rev-parse HEAD) candidate_tree=$(git rev-parse HEAD^{tree})"
           echo "run_id=$GITHUB_RUN_ID run_attempt=$GITHUB_RUN_ATTEMPT release=$RELEASE"
+          echo "deployment_id is read from the provider deployments API after the run; the deploy-pages action exposes only page_url."
           echo "This run wrote nothing back to the repository."
