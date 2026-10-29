@@ -32,7 +32,7 @@ one.
 | Owner answer | **YES** — one dispatch, conditions (a)–(e) accepted |
 | Source class | owner instruction, transcribed from the owner's session (chat); not a GitHub comment and not a provider record |
 | Owner session | 2026-10-28 at about 18:05 PDT (2026-10-29T01:05Z) |
-| Recorded in | the workspace R-A request for this step (`item2-ra/R-A-REQUEST.md`) and the workspace owner decision record for R-A / A-13 / U8 dated 2026-10-28 |
+| Recorded in | the workspace owner decision record for R-A / A-13 / U8 dated 2026-10-28 (`_A/remediation/handshake/OWNER-DECISION-RA-A13-U8-2026-10-28.md`, 2,256 B, SHA-256 `1c47cf274ccde5cfd2c0650605b9eabb1c7b8ac1b70053c6955961a68499969d`). That record is workspace-local and **not committed to this repository**; the R-A answer and conditions (a)–(e) are recorded there, not in `item2-ra/R-A-REQUEST.md`, which is the workspace-only ask. |
 | Dispatches made | **1** — no retry, no re-run, no second dispatch |
 
 The owner also accepted that approving R-A is not reversible by R-A (section 11). The
