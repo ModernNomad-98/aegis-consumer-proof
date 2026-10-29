@@ -172,6 +172,26 @@ jobs:
               print("::error::" + message)
               sys.exit(1)
 
+          # CP-12 guard: the retained distribution must be a real directory tree at
+          # its committed path. isdir/listdir/isfile follow a directory symlink, so a
+          # committed "site -> site.real" link is invisible to the per-file islink
+          # check below. Refuse a symlinked retained path, a retained path that
+          # resolves elsewhere, and a site path that resolves outside the checkout.
+          repo_real = os.path.realpath(os.getcwd())
+          if os.path.islink(SITE):
+              fail("retained site path is a symlink: " + SITE)
+          if os.path.realpath(ROOT) != os.path.abspath(ROOT):
+              fail("release directory resolves elsewhere: " + ROOT + " -> " + os.path.realpath(ROOT))
+          site_real = os.path.realpath(SITE)
+          if site_real != os.path.join(os.path.realpath(ROOT), "site"):
+              fail("retained site path resolves outside its release directory: " + SITE + " -> " + site_real)
+          try:
+              contained = os.path.commonpath([site_real, repo_real]) == repo_real
+          except ValueError:
+              contained = False
+          if not contained:
+              fail("retained site path escapes the repository checkout: " + SITE + " -> " + site_real)
+
           # Content gates copied verbatim from build mode. The manifest binds bytes,
           # not policy; these checks are repeated here so a matching manifest cannot
           # carry a CR byte or forbidden material past upload (plan section 3, step 4).
