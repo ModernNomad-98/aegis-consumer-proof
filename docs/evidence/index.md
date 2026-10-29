@@ -5,6 +5,12 @@ An entry binds one file; if that file changes, its entry must be recomputed.
 Owner policies and decisions committed to this repository are registered here too, in the
 same form as evidence records.
 
+## Current state
+
+The durable state and next-action record is [`docs/project-state.md`](../project-state.md).
+It is a projection of the records below, refreshed by content commit, and is not a separate
+evidence entry; the record carries the SHA-256 values of the evidence it cites.
+
 ## Release A
 
 | Artifact | SHA-256 | Bytes | Purpose |
