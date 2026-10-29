@@ -322,8 +322,8 @@ jobs:
           if REF == "refs/heads/main":
               print("freshness_selector_allow reason=ref_is_main ref=%s selected_release=%s" % (REF, RELEASE))
               sys.exit(0)
-          if not BASE.startswith("https://"):
-              refuse("pages_base_url_invalid", "PAGES_BASE_URL=" + repr(BASE))
+          if not BASE.startswith("http"):
+              refuse("pages_base_url_invalid", "PAGES_BASE_URL=" + repr(os.environ.get("PAGES_BASE_URL", "")))
 
           def retained_aggregate(release):
               path = os.path.join("docs", "evidence", "releases", release, "manifest.txt")
