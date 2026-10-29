@@ -70,3 +70,14 @@ restated here, for the reason given above; the row above binds the README only.
 | Artifact | SHA-256 | Bytes | LF | Purpose |
 | --- | --- | --- | --- | --- |
 | `docs/evidence/consumer-readiness/drift-register.md` | `e12e510e6df91910ff5ca0509837a93ce2af9fda966a049b4ac131f659a3de0a` | 10210 | 83 | CP-02 drift register against plan A1 §12 (owner decision CP-02=A, 2026-10-29): **D-01 (HIGH)** SDP-1 item 4 pre-grants R-EMPTY on conditions (a)–(d) alone, while A1 §12 E12 records R-EMPTY `NOT GRANTED` and plan S25 requires a U7 grant or a recorded irreversible-by-decision acceptance at S24b; **D-02 (MEDIUM)** the release A deployment record's "Recorded in" cell pointed at the R-A request, which is the ask and holds neither the answer nor conditions (a)–(e), with the pointer corrected in `docs/evidence/deployments/A.md` §2; **D-03 (LOW)** SDP-1 item 5 records a trigger-scoped standing permission where A1 §12 E14 records a per-turn, ungranted U4. All three are **recorded — not exercised; not resolved**: the register grants nothing, alters no policy and edits no SDP-1 content, and D-01/D-03 remain open for the owner or Lead. |
+
+## Settings changes
+
+| Artifact | SHA-256 | Bytes | LF | Purpose |
+| --- | --- | --- | --- | --- |
+| `docs/evidence/CP-21-settings-change-20261029/CP-21-SETTINGS-CHANGE-20261029.md` | `bc07e378bc3eebaba5fa9654f2a764af253bc28aa93465210b923a84c7a2be5f` | 15860 | 199 | Owner-authorized (SDP-1 section 1 item 6) settings change, dated 2026-10-29 (CP-21=B, condition (vi); conditions (i)-(vi) binding): the `github-pages` deployment branch policy id `64714655` (`main`) was temporarily supplemented with two exact branch policies, `64824653` `aep3-i2/cp12.7-manifest-symlink` and `64824654` `aep3-i2/cp21-freshness-selector`, added 2026-10-29T17:56:37Z and removed 2026-10-29T17:58:42Z (HTTP 204), **2 min 6 s** under change against a 60-minute limit; four readings (B1 17:55:37Z total_count=1; A1 17:56:38Z total_count=3; A2 17:58:43Z total_count=1 byte-identical to B1; B2 17:58:43Z byte-identical to B1) plus post-run FINAL and SUSTAINED re-reads prove the revert; the temporary admission carried exactly one fail-before dispatch (run `40926181149` success, deployment `7420139651`, served A aggregate `12ad18e1...`), one pass-after refusal (run `40926362502` failure `freshness_selector_refused`, steps 6-8 skipped, no upload or publish, served unchanged), and the restore from `main` (run `40926519791` success, deployment `7420187769`, served B `36bc4407...` byte-identical to the before snapshot); the revert evidence and the run records are attached in the same directory. |
+
+The entry's 29 attached evidence files are bound by
+`docs/evidence/CP-21-settings-change-20261029/EVIDENCE-INDEX.md` (5481 B, SHA-256
+`9f252ecda4a735771ebb0b137639e4733c22135e619d8194fbcd26838670fe07`), which lists each file's
+SHA-256, byte count and LF count over the committed bytes.

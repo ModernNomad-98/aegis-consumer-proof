@@ -1,0 +1,51 @@
+{
+ "label": "after-D2",
+ "utc": "2026-10-29T17:59:06Z",
+ "site": "https://modernnomad-98.github.io/aegis-consumer-proof/",
+ "rows": [
+  [
+   "app.js",
+   11072,
+   427,
+   "e4e970ff10ccd42d5c868193f59d3e7222d565ad1c96bff3e32843e410906281"
+  ],
+  [
+   "index.html",
+   1595,
+   40,
+   "e2e1ceecb84981c248aadbcec1650b1f0e1a468ed308640cb03e64bc6bd5b8f8"
+  ],
+  [
+   "styles.css",
+   3860,
+   247,
+   "1874ebf51643115e099aff13c8a4640fa980d693eaa69312d5fa368130b17137"
+  ]
+ ],
+ "files": {
+  "app.js": {
+   "url": "https://modernnomad-98.github.io/aegis-consumer-proof/app.js?cp21exec=after-D2-1793296746",
+   "http": 200,
+   "bytes": 11072,
+   "lf": 427,
+   "sha256": "e4e970ff10ccd42d5c868193f59d3e7222d565ad1c96bff3e32843e410906281"
+  },
+  "index.html": {
+   "url": "https://modernnomad-98.github.io/aegis-consumer-proof/?cp21exec=after-D2-1793296746",
+   "http": 200,
+   "bytes": 1595,
+   "lf": 40,
+   "sha256": "e2e1ceecb84981c248aadbcec1650b1f0e1a468ed308640cb03e64bc6bd5b8f8"
+  },
+  "styles.css": {
+   "url": "https://modernnomad-98.github.io/aegis-consumer-proof/styles.css?cp21exec=after-D2-1793296746",
+   "http": 200,
+   "bytes": 3860,
+   "lf": 247,
+   "sha256": "1874ebf51643115e099aff13c8a4640fa980d693eaa69312d5fa368130b17137"
+  }
+ },
+ "serialized": "app.js\t11072\t427\te4e970ff10ccd42d5c868193f59d3e7222d565ad1c96bff3e32843e410906281\nindex.html\t1595\t40\te2e1ceecb84981c248aadbcec1650b1f0e1a468ed308640cb03e64bc6bd5b8f8\nstyles.css\t3860\t247\t1874ebf51643115e099aff13c8a4640fa980d693eaa69312d5fa368130b17137\n",
+ "serialized_bytes": 251,
+ "aggregate": "12ad18e157ee0ed91ff174465d0adf65cca3430a6a29836d363b885c48bb867c"
+}
