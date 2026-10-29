@@ -42,13 +42,14 @@ contain the unredacted text, as does the parent tree of this commit.
    public consumer repo when pinned to one exact commit SHA on the source repository's main
    branch, with a committed hash manifest, LICENSE and attribution travelling with the
    bytes, and zero edits; divergence is a drift finding, not a local fix.
-4. **Release steps R-B, R-RB1, R-RB2, R-EMPTY: pre-granted conditionally.** Each may
-   dispatch without a new ask when (a) the previous step's evidence report is posted with
-   observed values, (b) the committed deploy gate replays PASS at the dispatch commit and
-   FAILS CLOSED at the pre-bundle commit, (c) the step is in the frozen case set, and (d)
-   prior state is re-observed within 5 minutes of dispatch. If any condition fails: STOP;
-   that step reverts to a per-ask decision. A failed dispatch is never retried under this
-   grant.
+4. **Release steps R-B, R-RB1, R-RB2: pre-granted conditionally.** Each may dispatch
+   without a new ask when (a) the previous step's evidence report is posted with observed
+   values, (b) the committed deploy gate replays PASS at the dispatch commit and FAILS
+   CLOSED at the pre-bundle commit, (c) the step is in the frozen case set, and (d) prior
+   state is re-observed within 5 minutes of dispatch. If any condition fails: STOP; that
+   step reverts to a per-ask decision. A failed dispatch is never retried under this grant.
+   **R-EMPTY is excluded from this item** by the dated amendment SDP-1b (2026-10-29): it is
+   owner-only under item 6 and is always a per-ask, as section 6 records.
 5. **Manual-only owners (U4-class): trigger-scoped standing permission** for
    `ci-pipeline-architect`, `observability-operator`, `agent-authorization-matrix`,
    `playwright-e2e-engineer`, limited to the frozen case set. Each invocation is logged as
@@ -69,7 +70,7 @@ contain the unredacted text, as does the parent tree of this commit.
 | The frozen case set | The 22 acceptance cases `CP-01` … `CP-22` frozen for this repository's release procedure. A step or an invocation outside that set is not covered by SDP-1. |
 | STATUS carrying the ask | A dated status that states the ask and the proposed fail-closed default, so the 30-minute window in item 1 is measured from a recorded time rather than from memory. |
 | Pre-granted action | An action SDP-1 permits without a new ask, which still produces its observed-evidence report (item 7). |
-| Steps item 4 covers | `R-B`, `R-RB1`, `R-RB2`, `R-EMPTY`. Release A's publish decision (`R-A`) is not in that list and remains a per-ask decision, as `docs/evidence/release-readiness/A.md` states. |
+| Steps item 4 covers | `R-B`, `R-RB1`, `R-RB2`. `R-EMPTY` was removed from that list by the dated amendment SDP-1b (2026-10-29): it is owner-only under item 6 and is always a per-ask with the pushed state restated. Release A's publish decision (`R-A`) is not in that list either and remains a per-ask decision, as `docs/evidence/release-readiness/A.md` states. |
 
 ## 3. What this record does not do
 
@@ -143,4 +144,60 @@ the owner, and so does any merge this clarification does not cover.
 | Clarification | SDP-1a, dated 2026-10-28 |
 | Scope | item 6 (merges) only; items 1-5 and 7 unchanged |
 | Source class | owner instruction, transcribed from the owner's session message; not a GitHub comment |
+| Register entries added | none — this section is part of the SDP-1 entry |
+
+## 6. Amendment SDP-1b — item 4, R-EMPTY excluded (dated 2026-10-29)
+
+Same register entry. This is a dated amendment appended to SDP-1, not a second policy
+record: no new entry is added to `docs/evidence/index.md`, and items 1, 2, 3, 5, 6 and 7 of
+section 1 stand exactly as written. Item 4 changes only as stated here: R-EMPTY leaves its
+conditional pre-grant, and R-B, R-RB1 and R-RB2 keep that grant unchanged.
+
+**Source.** Owner decision D-01, typed by the owner in the owner's own session on
+**2026-10-29 at about 16:2x PDT**, transcribed by the agent that received it, and recorded
+as D-01 in `docs/evidence/consumer-readiness/drift-register.md`. Class: owner instruction,
+agent transcription. It is not a GitHub comment and not a provider record.
+
+**The decision, transcribed.**
+
+> "D-01: A, simplified. Amend SDP-1 item 4 to EXCLUDE R-EMPTY from the conditional
+> pre-grant. R-EMPTY (teardown / unpublish) is owner-only per item 6 and always a per-ask
+> with pushed state restated. Record as SDP-1b, dated; mark D-01 RESOLVED by that
+> amendment; A1 §12 E12 stays NOT GRANTED and now agrees with SDP-1."
+
+**What the amendment does.**
+
+1. **R-EMPTY leaves item 4.** The conditional pre-grant in item 4 covers R-B, R-RB1 and
+   R-RB2 only. It grants nothing for R-EMPTY, and no R-EMPTY, teardown, delete or unpublish
+   may be dispatched on item 4 or on any of its four conditions.
+2. **R-EMPTY is owner-only per item 6.** Item 6 already lists any repository settings change
+   (including Pages disable/unpublish) as still requiring the owner. Item 4 no longer offers
+   a second, conditional reading of that step, and item 6's text is unchanged.
+3. **Every R-EMPTY request is a per-ask.** There is no pre-grant and no conditional dispatch
+   for it: each request is put to the owner and answered by the owner.
+4. **The ask restates the pushed state.** Each R-EMPTY ask states the live state it would
+   remove — what is pushed and being served at the time of the ask — rather than pointing at
+   an earlier description. A later ask restates it again; an earlier restatement is not
+   reused.
+5. **A1 §12 E12 is unchanged and now agrees.** A1 §12 E12 records `R-EMPTY` (U5) as
+   **NOT GRANTED**, with the DELETE-Pages primitive UNVERIFIED. That entry stays NOT
+   GRANTED: this amendment moves the consumer record to match it, not the reverse, and A1 is
+   not edited here. It also does not supply the A1 §13 U7 disposition A1 requires before an
+   R-EMPTY dispatch; that requirement is separate and is not satisfied by this amendment.
+6. **D-01 is resolved by this amendment.** D-01 in the consumer drift register asked whether
+   item 4 pre-grants R-EMPTY without the A1 §12 E12 / U7 precondition. The owner answered
+   with option **(A), simplified**: carve R-EMPTY out of item 4. **D-01 is RESOLVED by
+   SDP-1b, dated 2026-10-29**, and the two records no longer answer that step oppositely.
+
+**Residual.** R-EMPTY (teardown / unpublish) is always owner-only per item 6 and always a
+per-ask, and each ask restates the pushed state. This amendment authorizes nothing and is
+content only: no R-EMPTY ask, teardown, delete or unpublish is recorded in this repository.
+
+| Field | Value |
+| --- | --- |
+| Amendment | SDP-1b, dated 2026-10-29 |
+| Scope | item 4 (R-EMPTY excluded) and the section 2 row that states item 4's steps; items 1-3 and 5-7 unchanged |
+| Decision | owner decision D-01: "A, simplified" |
+| Source class | owner instruction, transcribed from the owner's session message; not a GitHub comment |
+| Resolves | D-01 in `docs/evidence/consumer-readiness/drift-register.md` |
 | Register entries added | none — this section is part of the SDP-1 entry |
