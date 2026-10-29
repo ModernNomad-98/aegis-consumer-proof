@@ -1,0 +1,59 @@
+# Context Source Checklist
+
+Supporting detail for `agent-startup-context-gate`. Read on demand.
+
+## Identity signals for established repositories
+
+Use independent signals available for the repository role. A matching remote
+and project landmark are strong evidence for an established checkout. A fresh
+consumer/product repository may have no remote, history, manifest or
+application files yet; do not turn their absence into a source-library claim
+or an automatic halt.
+
+| Signal | How to check | What confirms |
+| --- | --- | --- |
+| Git remote | `git remote -v` | URL matches the repo the task names (org + name). |
+| README identity | first heading + purpose paragraph | Title/purpose matches the expected project. |
+| Landmark layout | `ls` top level | Expected directories exist (`src/`, `docs/`, `.claude/`, …). |
+| Manifest | `package.json` name, `pyproject.toml` name, `.sln` | Project name matches. |
+| Recent history | `git log --oneline -5` | Commit subjects are plausibly this project's work. |
+| Git identity | git config --get user.name / --get user.email; compare with recorded owner identity | agent's own identity set and verified; owner identity => stop |
+| Pre-commit hook | execute hook check against configured identity | non-owner identity required; owner refuses commit |
+
+Two signals from the SAME row (e.g. two README lines) count as one. Path
+existence and directory name alone count as zero signals — near-miss and
+unintended empty directories pass both. Read local `AGENTS.md` role rules:
+Project Aegis source-library role requires all four source-package landmarks
+listed there. Copied startup instructions without those landmarks do not
+establish source-library role. For a task-named fresh Stage 0 consumer workspace,
+use the task location plus local role/instruction evidence; record missing
+remote, history or product manifest as expected unknowns. Ask one location or
+role question only if evidence genuinely remains ambiguous or contradictory.
+
+## Reading precedence (stop at the depth the task needs)
+
+1. Agent instruction files: root `CLAUDE.md`, nested `CLAUDE.md`, `AGENTS.md`,
+   tool-specific instruction files.
+2. Repo-designated canonical docs (reconciliation records, "single source of
+   truth" docs, standards the instructions point to).
+3. `README.md` — orientation and links, but its process claims can be stale.
+4. Status docs: roadmap, catalog, changelog, open PRs.
+5. Architecture/design docs relevant to the task area.
+6. Tests covering the task area (they encode actual current behavior).
+7. The specific files the task names.
+
+## Per-repo-type additions
+
+| Repo type | Also inspect |
+| --- | --- |
+| Library/package | public API surface, versioning/release config, CI matrix |
+| Service/app | entry points, config/env handling, migration dir, deploy config |
+| Monorepo | workspace layout, per-package instruction files, ownership map |
+| Docs/skills repo | authoring standard, validator script, catalog integrity rules |
+
+## Resume checklist (session was interrupted or compacted)
+
+- Re-verify branch and working-tree state — do not trust remembered state.
+- `git log` since the last verified point; someone (or you) may have committed.
+- Re-read any doc the task treats as canonical if it could have changed.
+- Restate the task's remaining scope before acting.

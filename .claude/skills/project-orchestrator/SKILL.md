@@ -1,0 +1,494 @@
+---
+name: project-orchestrator
+description: 'The beginner-facing front door: take a non-developer from vague idea to shipped product with no jargon to learn. Detects the project''s current stage (from docs/project-state.md + the repo), routes to the owning stage skill BY NAME, turns each technical decision into one plain-language business question, and records every dated decision — keeping the human as the approval/merge gate on every irreversible step (composing, never relaxing, ai-sdlc-operating-model''s stage-gate map and the approval skills). Use when someone says "I have an idea but don''t know where to start", "I''m not a developer", "what do I do first / next", or "take me from idea to shipped". Do NOT use to run the requirements interview (requirements-gathering-facilitator — this invokes it as stage 1), author a team''s AI-SDLC policy (ai-sdlc-operating-model), write the spec (product-spec-writer), or serve a user who already knows their next step (the owning skill).'
+---
+
+# Project Orchestrator
+
+## Purpose
+
+The beginner's front door to the whole library. The user brings the **business
+truth** — what their business does, what goes wrong, who their customers are —
+and this skill supplies the **engineering discipline** by routing to the
+library's existing skills, so the user never has to know a skill name or a
+technical term. It takes a non-developer from a vague idea ("I run a maintenance
+company, jobs get missed, I think I need an app") to a shipped product.
+
+It is a **thin router**, not a method — one loop: **detect the current stage →
+translate the next decision into a plain-language business question → invoke the
+owning stage skill BY NAME → propose the dated outcome and, once the user
+approves it, record it in `docs/project-state.md` → gate on the human before
+anything irreversible → advance.**
+
+**It composes; it never restates.** The canonical stage list, per-stage gate,
+authority model, and change-classification matrix are OWNED by
+[`ai-sdlc-operating-model`](../ai-sdlc-operating-model/SKILL.md) and
+[`change-classification-gate`](../change-classification-gate/SKILL.md) — cited by
+name, never linked into their internals. This skill CITES and DELEGATES to them —
+copying any inline is failure. **Navigating a specific beginner's project through
+that map is the gap this skill fills** (`ai-sdlc-operating-model` disclaims
+in-flight navigation).
+
+## Use When
+
+- Use when: someone signals **meta-navigation** — "I have an idea but don't know
+  where to start", "I'm not a developer / not technical", "what do I do first",
+  "what comes next", "take me from idea to shipped", "guide me through building
+  this end-to-end", or "where am I in this project / what's my next step".
+- Use when: a project has a `docs/project-state.md` and the user returns asking
+  what to do next — detect the recorded stage and continue (never restart).
+- Use when: a technical decision must be made but the user can only answer in
+  business terms (scope, behavior, cost, risk, customer experience).
+- Do NOT use to **run requirements elicitation itself** — the structured
+  discovery interview is [`requirements-gathering-facilitator`](../requirements-gathering-facilitator/SKILL.md).
+  This skill INVOKES it as stage 1; the distinguisher is "navigate the whole
+  journey" vs "facilitate my requirements". A user who says "help me pin down my
+  requirements" wants the facilitator, not this.
+- Do NOT use to **author the artificial-intelligence-assisted software development lifecycle (AI-SDLC) policy** for a team adopting agents — that
+  map for a technical team is `ai-sdlc-operating-model`. This drives ONE
+  beginner's ONE project through it.
+- Do NOT use to **write the spec** once requirements are known
+  (`product-spec-writer`), or to handle a **single-stage request** from a user
+  who already knows the next step ("review this diff" → `code-reviewer`; "design
+  the schema" → the owning skill). This skill is for the user who does NOT know
+  the next step.
+
+## Inputs to Inspect
+
+1. **`docs/project-state.md` in the user's product repo, FIRST** (if present) —
+   the current stage and next recommended action (read from the LATEST dated
+   STATE SNAPSHOT entry — the file is append-only, so the newest snapshot IS
+   the current state), the approved brief + minimum viable product (MVP) scope, decision log, and open
+   questions. This file is the map coordinate; read it before anything else.
+   If absent, infer stage from the repo; absence alone is not stage zero.
+2. **The user's repo, to corroborate the state file — and its ROLE.** This is
+   the user's PRODUCT/consumer repo, not the Project Aegis skills library:
+   detect role from evidence. Source-library role needs README `# Project
+   Aegis`, `docs/skills-catalog.md`, `scripts/validate-skills.py`, and
+   `artifacts/audits/skill-contract-audit-baseline.json`. Copied skills,
+   AGENTS.md or CLAUDE.md do not prove source role. If genuinely ambiguous,
+   ask one role/location question and write nothing. Read product files
+   that reveal stage: a spec doc, a domain/architecture doc or
+   architecture decision records (ADRs), application source, migrations, tests, continuous integration (CI), deploy/infrastructure-as-code (IaC). No state file and
+   no repo = discovery. An approved spec whose **four Stage 2 owner DECISION rows
+   are all recorded** with no code = ready for architecture; an approved spec
+   MISSING any recorded owner decision is **still in Stage 2** (the recorded exit
+   gate, not the spec alone, releases Stage 3). Code but no tests/CI = quality assurance (QA)/release
+   prep. A state-file claim that contradicts the repo is a conflict to surface.
+3. **The user's answers, in their own words** — business scope, behavior,
+   who-can-do-what, customer experience, commercial model, risk tolerance. Never
+   assume they know a technical term.
+4. **The library's skill inventory** (`.claude/skills/`) — the owning skill for
+   each stage already exists; route to it, do not invent a new procedure.
+5. **The cited gate/authority artifacts** — `ai-sdlc-operating-model`'s
+   `references/stage-gate-map.md` (per-stage gate, authority, evidence),
+   `change-classification-gate` (per-slice rigor), `human-approval-boundary` +
+   `agent-authorization-matrix` (the human gate). Read to CITE, never copy.
+
+## Workflow
+
+**Capability 1 — Detect the current stage (locate the project ON the map).**
+Read `docs/project-state.md` — the current stage and next recommended action
+are its LATEST dated STATE SNAPSHOT entry (latest snapshot wins; there is no
+mutable header field to trust or update) — then inspect the repo (input 2).
+Cross-check: the recorded stage must match repo reality; a mismatch is
+surfaced to the user, not silently resolved. Output a one-line "you are here"
+in plain language. No repo, or a zero-commit product repo without app files
+or state, means stage zero (nothing started yet) → discovery, which is Stage 1 below. Propose opening `docs/project-state.md`
+through Capability 4's approved-create leg — the COMPLETE initial document
+previewed, an explicit yes, only then created (template below).
+**A setup request is not a product stage:** when the user asks to set up or change Aegis itself (Aegis only, or a future local or online helper), not to build a product, first say plainly that setup is the manual-only `aegis-setup` skill, started by typing `/aegis-setup`; do not run or read it, and start no product discovery before offering that.
+
+**Capability 3 — Translate the next decision into ONE plain-language business
+question.** Every technical fork surfaces to the user as a business question
+about cost, time, risk, behavior, or customer experience. The RULE:
+
+> The user answers BUSINESS questions ONLY — scope, behavior, who-can-do-what,
+> customer experience, commercial model, risk acceptance, release
+> authorization. The user NEVER decides internal engineering mechanics
+> (pooled-vs-siloed tenancy, queue retry semantics, row-level security (RLS) structure, cache-key
+> design, CI shard topology, IaC layout, token-based AI rate limits,
+> test-locator strategy, service-level objective (SLO) measurement). The orchestrator DECIDES those via
+> the owning skill and EXPLAINS them in business terms — escalating to the human
+> ONLY when business impact needs human judgment.
+
+Worked examples (encode the pattern, not these strings):
+
+- *"modular monolith vs microservices?"* → **"How many people will use this
+  at launch?"** (ask about team size on a later turn if still needed).
+
+Ask **one** user DECISION question per turn — at most one; no hidden second
+question folded into the explanation, and never a compound question bundling
+several selectable decisions. Any "question X of Y" count is derived from an
+explicit checklist, not conversational memory (see
+[references/recording-and-authority.md](references/recording-and-authority.md)).
+Never assume terminology. And every
+engineering decision the orchestrator makes through an owning skill is
+explained — and later proposed for the log (Capability 4) — with its
+rationale REQUIRED: the **"(chosen over …, because …)"** clause naming the
+main rejected alternative and the plain-language why, so the user learns the
+trade-off at every approval, not just the outcome.
+
+For a user-owned build choice, define terms; explain each viable option's reason, pros, cons, and money/setup/maintenance costs or uncertainty; recommend one with a reason tied to the user's context.
+If a sound recommendation needs a missing fact, ask one atomic discovery question first; otherwise ask ONE atomic decision question after the explanation. The user's choice remains theirs.
+The owning skill decides internal mechanics; explain its choice and trade-off. Keep factual discovery and simple approval questions concise, without an option comparison.
+A choice answer never authorizes installation, spending, provisioning, deployment, or a project-state write; apply Capability 4 and the relevant authority gate separately.
+
+**Capability 2 — Route to the owning skill(s) BY NAME along existing seams.**
+Select the owning skill for the detected stage and invoke it. Every ACTUAL
+invocation displays the **exact repository skill name in backticks** — a
+friendly plain-language description may follow but never replaces the exact
+name — and the invocation arrow (`→ invokes ‹name›`) is reserved for a real
+skill execution, never a classification or recording step. This is the outer
+**product arc**; the routing names WHICH skill to invoke — the entry/exit gate,
+authority, and evidence for each stage are CITED from
+`ai-sdlc-operating-model`'s `references/stage-gate-map.md`, never reproduced
+here.
+
+- **Stage 1 — Understand the need.** → `requirements-gathering-facilitator` (produces the
+  requirements brief), under the **interactive delegated-skill protocol** (governs any interactive
+  stage skill): the orchestrator stays the conversation owner and delegates only method — announcing
+  the exact invocation line `→ invokes requirements-gathering-facilitator` (the exact name, never a
+  "requirements skill/step" alias); the facilitator supplies method and ONE candidate target. Before
+  displaying it, the orchestrator applies a final **ATOMIC-QUESTION GATE**: one question = one
+  independently answerable information or decision target; run the test "could the user answer one
+  requested part while another remains unanswered?" — if yes the candidate is compound, so split it,
+  keep ONLY the highest-value first target this turn, and hold every other target INTERNAL for a later
+  turn (recording-and-authority §1, step 1). No secondary answer request may appear elsewhere in the turn — no
+  "include…/also…/and if you can…" rider, no second imperative, and status/next-action prose may
+  restate the SAME target but never request another. Display the ONE atomic question and STOP — never a
+  question-bank dump, a numbered questionnaire, several open or "answer-any" questions, or a compound
+  question (this cadence IS the interview, NOT "one binding question"). The same one-target rule
+  governs any next/open discovery question written into the cold-start `Open questions` projection —
+  one atomic target per bullet, never a bundled process+actor+incident+cause question. Each answer
+  feeds FACTS to the brief, while each user-owned scope/behaviour/privacy/workflow/product decision
+  joins the VISIBLE pending batch (recording-and-authority §1 — no per-answer write); the final brief
+  appears only once no spec-blocking question remains. **Recorded Stage 1 lags the analysis**
+  (Scenario A acceptance-review findings AR-A-008/AR-A-010 in [the Scenario A runbook](../../../docs/acceptance/scenario-a-runbook.md)): with the analysis done but nothing recorded, say exactly "The Stage 1 analysis
+  is complete, but the recorded project stage remains Stage 1 until the approved records are written
+  and confirmed" — do not invoke product-spec-writer, say the project is in Stage 2, or claim the
+  Stage 2 snapshot; preview the pending decisions (exact `PS-*` decision-log entries such as `PS-001`, next identifiers (IDs) from the current
+  state) with the brief as ONE batch under ONE approval, never claiming the Decision log stays empty;
+  the recorded stage advances only after that batch and the next STATE SNAPSHOT are recorded and
+  confirmed (a proposed row is not a recorded row).
+- **Stage 2 — Define the product.** ALWAYS begins → invoke `product-spec-writer`.
+  After the spec, classify the remaining owners **one at a time, in the order
+  below, independently by evidence** — exactly ONE per turn (a read-only judgement
+  that invokes NO skill; it shows in WHAT HAPPENS NEXT as a classification
+  decision, not an invocation). Never classify, predict, imply, or hedge a LATER
+  owner's result — "likely applicable", "probably n/a" (n/a = not applicable), "most likely not",
+  "expected n/a" are all forbidden previews of a verdict: each stays
+  `unclassified` until its own turn, classified only AFTER the
+  current owner's result is recorded — so prose, the STAGE-2 OWNERS ledger, NEXT
+  OWNER, and EXIT GATE agree. Invoke ONLY an owner whose criteria below are met;
+  classify each other `n/a` with a reason. No skill manufactures the evidence that
+  justifies invoking it; recording a terminal result is also a non-invocation step.
+  - **Prioritization** — APPLICABLE on evidence of competing capabilities,
+    initiatives, or release choices; a real ranking or scope-tradeoff decision;
+    or genuine unclarity about what matters most. NOT APPLICABLE for one bounded,
+    already-agreed MVP with no ranking decision. A requested date alone does not
+    make it applicable. When applicable: → invoke `prioritization-frame-picker`.
+  - **Roadmap** — APPLICABLE on evidence of sequencing uncertainty; multiple
+    horizons or releases; unclarity about what comes first or later; or timing
+    pressure that genuinely needs an uncertainty-aware sequence. NOT APPLICABLE
+    for one bounded release with no sequencing decision, or a deadline that can
+    be assessed without building horizons. A deadline alone does not make it
+    applicable. When applicable: → invoke `roadmap-under-uncertainty-planner`.
+    Either way the turn ends with `roadmap-under-uncertainty-planner` classified applicable or classified `n/a` (reason) — the recorded verdict, never an implicit skip.
+  - **Commitment readiness** — APPLICABLE when a stakeholder asks for a deadline,
+    promise, delivery commitment, or feasibility/readiness decision, or a target
+    date must be assessed honestly. NOT APPLICABLE when nobody asked for a
+    commitment and the project is simply defining the product and moving into
+    design. Competing priorities alone do not make it applicable. When
+    applicable: → invoke `roadmap-to-commitments-translator` (readiness mode).
+  - **Order when several apply** (skip any `n/a` owner without invoking it):
+    `prioritization-frame-picker` → `roadmap-under-uncertainty-planner` →
+    `roadmap-to-commitments-translator` (readiness mode).
+  - **Worked classifications** (each asserted by an eval, a behavior test case in `evals/evals.json`): bounded MVP + deadline
+    → only commitment readiness; competing capabilities, no deadline → prioritization
+    (+ roadmap if sequencing); all three signals → all in order; bounded MVP, none → `n/a`.
+
+  **Commitment readiness at Stage 2 is a READINESS ASSESSMENT, never a
+  promise.** When the evidence a real commitment needs — architecture/design,
+  dependency discovery, technical planning, measured throughput, or a defensible
+  capacity basis — is absent, the result is **`NOT COMMIT-ABLE`**: record that no
+  delivery commitment is supportable, name the missing evidence, keep any
+  stakeholder date an **unverified target only**, and record when to reassess. A
+  target date, approved scope, gross hours, team size, or an
+  implementation/governance authorization is NEVER turned into a promise. `NOT
+  COMMIT-ABLE` is a **completed** result — it does NOT trap the project in Stage
+  2. Record the reassessment as a deferred next-action tied to its evidence
+  milestone; when that milestone is later reached (e.g. architecture recorded at
+  Stage 3), re-invoke `roadmap-to-commitments-translator` (readiness mode) — a
+  requested date is never left unverified indefinitely.
+
+  **Stage 2 exit gate (recorded, not merely reached).** Each owner carries one
+  ledger state (Output Format). A terminal analytical result does NOT satisfy the
+  gate: reaching `complete`, `n/a` (reason), or `NOT COMMIT-ABLE` first enters an
+  `*-awaiting-record` state, because the outcome is only PROPOSED until Capability
+  4 runs — preview the exact DECISION entry; use a current valid grant only if it records grant ID, issuer, action, exact path, EXACT content hash (a scope alone NEVER authorizes a content write), issue+expiry dates and revocation state, and is named in the DECISION entry; otherwise take the user's explicit content-specific yes to that exact path and content.
+  After approval/grant the previewed path and byte-for-byte content must remain unchanged — any change invalidates authorization and requires a new preview and approval. Missing/out-of-scope → stop and request a NEW explicit content-specific yes or corrected grant; stale/revoked/conflicting → HARD STOP with no explicit-yes or alternate-authority fallback (a new approval/corrected grant is required); never widen by inference. Verify grants through agent-authorization-matrix, but verification must be INDEPENDENT of the Capability-4 writing actor (a human or separate authorized agent); the DECISION entry records grant ID, the exact content hash compared with the preview, and that independent matrix verification result.
+  Append and confirm only after the unchanged-content check; keep Stage 2 serial. Only then is the owner recorded.
+  `product-spec-writer` runs `pending`, then `complete-awaiting-record`,
+  then `complete-recorded` (reached only after the user's OWN acceptance of the spec — anchored to the accepted artifact by path + SHA-256 hash (a fingerprint of the file's exact contents) — is itself a recorded decision per the template; approving a row's wording is not accepting the spec's content); each conditional owner runs `unclassified`, `pending`,
+  its `*-awaiting-record` result, then `*-recorded`. `unclassified`, `pending`,
+  `blocked`, and every `*-awaiting-record` hold the gate BLOCKED; ONLY `complete-recorded`,
+  `n/a-recorded` (reason), and `NOT-COMMIT-ABLE-recorded` (missing evidence)
+  satisfy an owner. All four must be `*-recorded` before Stage 3 is proposed —
+  never while a result awaits its append, never on a silent skip.
+- **Stage 3 — Design how it's built.** → `domain-modeler` → `architecture-advisor` → `architecture-designer` →
+  `adr-writer`. *By evidence of a software-as-a-service (SaaS)/multi-customer product:* `saas-platform-architect`, `tenant-modeler` →
+  `multi-tenant-data-architect`, `authorization-matrix-designer`. *By evidence of a need to turn a feature on for a few customers first, or switch it off within minutes without a release:* `feature-flag-architect`, which asks its own flag-store question on a later turn.
+  The evidence is the spec's rollout intent. When the spec is silent and the product has more than a handful of users or customers, ask two atomic questions, one per turn, each after a plain explanation and a recommendation: first, turn a new feature on for a few customers first, or for everyone at once? Queued, only if "everyone at once": switch a misbehaving feature off within minutes without releasing code, or is a normal release fast enough? Either need routes; "everyone at once" plus "a normal release" is recorded with what it was chosen over, no route. One change's staged rollout stays with `feature-flag-rollout-strategist`.
+- **Stage 4 — Make it safe.** *Only by evidence:* `threat-modeler` / `ai-threat-modeler`;
+  `tenant-isolation-reviewer`, `share-link-access-architect`,
+  `file-upload-storage-architect`, `prompt-injection-defender` *(manual-only)*,
+  `structured-output-validator`, `ai-cost-guardrail-designer`. For AI agent
+  runtimes: `agent-harness-architect`, `model-context-designer`, conditional
+  `agentic-loop-designer` — follow [AI path](../../../docs/paths/add-ai-safely.md).
+- **Stage 5 — Plan the work.** → `tech-spec-writer` → `ai-task-decomposer` →
+  `phased-work-handoff-designer` → `change-classification-gate` →
+  `human-approval-boundary`.
+- **Stage 6 — Build it, one slice at a time.** Hand each slice to
+  `ai-sdlc-operating-model`'s **inner lifecycle** (context → classify → plan →
+  implement → validate → review → merge → close). Its `stage-gate-map.md` names
+  the enforcers to invoke — `agent-startup-context-gate`,
+  `change-classification-gate`, `docs-first-implementer` *(manual-only)*,
+  `tdd-engineer` *(manual-only)*, `reviewable-diff-discipline` *(manual-only)*,
+  `local-ci-mirror-preflight` *(manual-only)*, `code-reviewer`, `security-pr-reviewer`,
+  `ai-closeout-reporter`. Route to them via that map; do not re-derive the gates. For user-interface slices, also follow the [UI path](../../../docs/paths/design-and-build-ui.md), which names the UI owners in order; it adds no gate and removes none.
+- **Stage 7 — Prove it works.** → `qa-strategy-architect` →
+  `test-plan-designer`. *By evidence:* `integration-test-designer`,
+  `api-contract-test-designer`, `playwright-e2e-engineer` *(manual-only)*,
+  `manual-test-case-creator`,
+  `accessibility-test-harness`, `performance-test-harness`.
+- **Stage 8 — Get it ready to run.** **First classify hosting applicability from actual approved requirements and artifacts — never from a folder label.** When they explicitly establish that no hosted service, account/tenant backend or infrastructure applies (single operator/browser, local artifact only), take the **local-only release branch before any provider routing**: keep local artifact integrity, persistence, recovery, validation and release verification proportionate, with rollback/recovery steps for the local artifact. This branch may not bypass a hosted requirement or a shared gate; if later approved requirements add hosting, return to the hosted branch below. The local route is explicitly **NOT a deployment, a production operation, or a CI-green claim**; when host applicability is unknown, silent or conflicting, PAUSE and ask the human rather than guessing from a folder/stack label. Minimum local release evidence (not left to 'proportionate'): actual artifact hash + opening command followed, persistence/recovery observation, validation results, rollback/recovery steps, and local data-at-rest security/privacy check, recorded through the applicable existing gates (change-classification-gate; release-readiness-reviewer at Stage 9; security-pr-reviewer where data sensitivity applies), with the shared gates still required. When hosting applies, start with `cloud-architecture-decider`,
+  then follow its ACTUAL outcome: **AWS** (Amazon Web Services) → `aws-saas-architect`; **Azure** → `azure-saas-architect`; **modern managed tier** (container platform-as-a-service (PaaS), managed
+  Jamstack/server-side rendering (SSR), Postgres backend-as-a-service (BaaS), edge-serverless) → follow the tenancy, RLS, cost, and deployment handoffs the decider itself names — no dedicated
+  mapper exists by design; **GCP** (Google Cloud Platform) → state plainly that no dedicated GCP
+  mapping skill exists yet and PAUSE the provider-mapping hop for the human's direction (never invent a mapper, never silently reroute to
+  AWS/Azure), continuing below once directed. Then `iac-reviewer` ONLY when
+  an actual IaC or config-as-code artifact exists, and unconditionally:
+  `ci-pipeline-architect` *(manual-only)* →
+  `slo-reliability-architect` → `observability-operator` *(manual-only)*
+  → `rollback-runbook-author` →
+  `incident-response-runbook`. *If merge == deploy on the platform:*
+  `merge-is-deploy-governance`. Route FROM the decider's result; never
+  re-derive or copy its decision model here; for several reviewers and plain-language skill explanations, use the [guided release path](../../../docs/paths/release-with-agents.md).
+- **Stage 9 — Decide to release.** → `risk-tiered-validation-selector` → `sharded-validation-with-resume` → `release-readiness-reviewer`
+  (and the read-only reviewer subagents in `.claude/agents/` when available and relevant); the reviewer advises and the owner authorizes; Aegis's control plane is synthetic only.
+  *At release, unless the owner has already answered it, ONE plain question:* is this change risky enough to ship behind a flag, with a gradual rollout and a kill switch (a fast off switch)? A yes routes to `feature-flag-rollout-strategist`, preceded by `feature-flag-architect` when no flag system exists yet.
+
+**The manual-only routing invariant.** Before routing to ANY skill, check its
+invocation posture. A **manual-only** target (`disable-model-invocation: true`;
+sentinel "MANUAL-ONLY; never auto-invoke") is never invoked on the strength of
+the orchestrator's own auto-invocation — that would launder a human-triggered
+gate into an automatic hop. Instead: EXPLAIN the boundary in business terms,
+STOP that hop, and hand the invocation to the USER by name (the `docs/paths/`
+convention: "name it explicitly — you type the skill's name"). Consumers that
+ignore the posture field have only this text and the sentinel to hold the line.
+
+**Invoke by evidence, not by default.** The stage-4 security skills, the SaaS
+architecture-depth family, the AI/agentic-security packs, and the analytics
+skills are CONDITIONAL — invoke a skill only when the project's actual features
+call for it (a file-upload feature earns `file-upload-storage-architect`; an
+large language model (LLM) feature earns `prompt-injection-defender`; a purely internal single-tenant
+tool earns none of the tenancy skills).
+
+**The human gate (composed, never relaxed).** Before anything irreversible — a
+migration, a deploy, an authentication/authorization (auth) or permission change, a deletion, a merge, a public
+release — route through `human-approval-boundary` (the runtime halt),
+`change-classification-gate` (which rigor + approval path the slice needs), and
+`agent-authorization-matrix` *(manual-only)* (the standing floor: merge to a protected branch is
+a named human's decision; agents never arm auto-merge). Present **GO /
+CONDITIONAL-GO / NO-GO** with a plain-language reason and evidence; the **user
+authorizes**. This skill is model-invocable so it fires on the cold vague
+prompt, but its OUTPUT is proposals-and-questions — it advances past a stage gate
+only after the user confirms.
+
+**Capability 4 — Record the outcome (dated) in `docs/project-state.md`, by
+propose → approve → append/refresh (or approved-create at cold start).** Prepare
+the complete dated entry — one of the template's three types: a **DECISION**
+(carrying its "(chosen over …, because …)" clause — the rejected alternative and
+the plain-language why), an **APPROVAL** (an `A-*` evidenced grant or immutable lifecycle event naming its target and effective time), or a **STATE SNAPSHOT** (new current stage + next action;
+a stage advance is a NEW snapshot, latest wins — no header field is edited) — per
+[references/project-state-template.md](references/project-state-template.md). Show
+the exact target path, entry ID, date, and **byte-for-byte** content (no
+ellipsis, no omitted column, no truncated anchor, no paraphrase where exact is
+required); for a DECISION the preview shows the chosen-over clause. Ask ONE
+lightweight "OK to record it?" when recording is not already authorized; append under the applicable explicit grant to that exact
+path and content; then confirm the exact appended entry (or an exact hash +
+complete location + entry id). The **create leg** shows the COMPLETE initial
+document and creates it under applicable explicit authorization (overwrite is
+never allowed). Without an existing grant covering the write, obtain approval
+of that preview; a decline or ambiguity means no write. Re-propose changed content
+only when it exceeds the actual grant. A business answer alone is not write approval;
+a correction is a NEW entry, never a silent overwrite. **The recording
+DISCIPLINE — risk-tiered batching of low-risk decisions, authority kept separate
+from scope/spec/design acceptance, proposal-fingerprint and already-recorded
+idempotency, and the mutable-projection refresh — lives in
+[references/recording-and-authority.md](references/recording-and-authority.md);
+apply it, do not restate it here.** After an approved append/refresh, restate the
+single next recommended action in plain language.
+
+## Output Format
+
+Each turn produces (never a wall of jargon):
+
+```
+WHERE YOU ARE:   <plain-language stage — e.g. "You have an agreed idea but no written plan yet.">
+WHAT I CHECKED:  <state file + repo signals that put you here>
+CHOICE CONTEXT:  <only for a build choice: plain terms, each viable option's reason, costs/unknowns, pros and cons, recommendation and why; shown before ONE QUESTION> (else: —)
+ONE QUESTION:    <a single business question, if a decision is needed>   (else: —)
+WHAT HAPPENS NEXT: <one of — classification decision (no skill invoked) | owning skill named plainly → invokes `<skill-name>` | record terminal decision (preview + cite applicable existing authorization, otherwise await approval)>
+STAGE-2 OWNERS:  (shown while in Stage 2)
+  product-spec=<pending|complete-awaiting-record|complete-recorded|blocked(reason)>;
+  prioritization=<unclassified|pending|complete-awaiting-record|complete-recorded|n/a-awaiting-record(reason)|n/a-recorded(reason)|blocked(reason)>;
+  roadmap=<unclassified|pending|complete-awaiting-record|complete-recorded|n/a-awaiting-record(reason)|n/a-recorded(reason)|blocked(reason)>;
+  commitment-readiness=<unclassified|pending|complete-awaiting-record|complete-recorded|n/a-awaiting-record(reason)|n/a-recorded(reason)|NOT-COMMIT-ABLE-awaiting-record(missing evidence)|NOT-COMMIT-ABLE-recorded(missing evidence)|blocked(reason)>;
+  NEXT OWNER=<skill-name|classification decision|record terminal decision|none>;  EXIT GATE=<MET|BLOCKED>
+IF IT'S IRREVERSIBLE: GO | CONDITIONAL-GO | NO-GO — <plain-language reason + evidence>; you authorize.
+NEXT ACTION:     <the single next recommended action, in plain language>
+RECORDING: exactly one form (see references/recording-and-authority.md) — NONE THIS TURN (no terminal result exists to record — a pure invocation, classification, or question turn; nothing to preview or approve, and no log entry is fabricated); or SINGLE=<path + one ID + date + attribution + byte-for-byte entry>; or BATCH (low-risk only)=<path(s) + ORDERED list of every ID + each date/attribution + byte-for-byte content of EVERY entry + any exact projection refresh>, ONE approval for the complete bounded batch (high-risk actions are never batched)
+RECORDING STATUS: NONE THIS TURN | AWAITING EXPLICIT APPROVAL (only when authority is missing; nothing written) | RECORDED under applicable explicit grant: exact entry or every batch ID + every refreshed projection listed; partial failure reports exactly what did and did not land
+```
+
+`docs/project-state.md` is workspace-persisted after a verified write (template in Supporting Files); Git-tracked, committed and remote-persisted require separate evidence:
+append-only immutable evidence — the STATE SNAPSHOT log (latest snapshot IS the
+current state), the decision log (each entry with its chosen-over rationale),
+approvals, and deviations — plus mutable current-view projections (summary,
+scope, users, success, open questions) refreshed at approved checkpoints.
+
+## Validation Checklist
+
+- [ ] **Compose, not restate:** no inline stage-gate/authority/classification
+      table — each CITED (`ai-sdlc-operating-model`'s `references/stage-gate-map.md`;
+      `change-classification-gate`), grep-confirmed.
+- [ ] Stage DETECTED from the LATEST STATE SNAPSHOT + repo; a mid-flight project
+      continued, not restarted; no mutable header field read or updated.
+- [ ] Every technical decision reached the user as ONE plain-language business
+      question (no engineering mechanics pushed onto them); every DECISION carried
+      its "(chosen over …, because …)" rationale.
+- [ ] **Interactive Stage 1 / ATOMIC-QUESTION GATE:** orchestrator owned the chat, announced `→ invokes
+      requirements-gathering-facilitator`, applied the one-target gate — a candidate answerable in parts
+      split to ONE atomic question (no bank-dump/numbered/compound, no "include/also" secondary request;
+      cold-start `Open questions` bullets atomic), then STOP; recorded Stage 1 lagged until confirmed.
+- [ ] Routing named the OWNING skill; conditional skills invoked only on evidence;
+      every manual-only target handed to the USER by name (never auto-invoked).
+- [ ] **Stage 2 owners classified independently:** Stage 2 began by invoking
+      `product-spec-writer`; each conditional owner was classified applicable or
+      `n/a` (reason) on ITS OWN evidence, never predicted or hedged; when several
+      applied the order
+      `prioritization-frame-picker` → `roadmap-under-uncertainty-planner` →
+      `roadmap-to-commitments-translator` held with the roadmap planner invoked
+      at most once; no owner was silently skipped.
+- [ ] **Recorded exit gate:** each terminal result first entered
+      `*-awaiting-record`, holding EXIT GATE=BLOCKED with NEXT OWNER named, and
+      satisfied its owner only as `complete-recorded` / `n/a-recorded` /
+      `NOT-COMMIT-ABLE-recorded`; Stage 3 was proposed only once all four were
+      recorded; any NOT COMMIT-ABLE produced no date or promise. Classification and
+      recording were shown as non-invocation steps (no invented invocation arrow).
+- [ ] Every irreversible step routed through `human-approval-boundary` +
+      `change-classification-gate` + `agent-authorization-matrix`; the user
+      authorized; nothing auto-merged or auto-deployed.
+- [ ] Recording followed propose → approve → append (approved-create at cold start): exact path, ID, date and byte-for-byte content shown BEFORE any write; a current valid grant (ID/issuer/action/path/EXACT content hash; scope never substitutes/issue+expiry/revocation, independently verified, named in the DECISION) is used without repeat consent, otherwise explicit content-specific yes; stale/revoked/conflicting is a hard stop with no explicit-yes fallback.
+      After approval the previewed path and byte-for-byte content are UNCHANGED (any change requires new preview/approval); declined/ambiguous or missing/out-of-scope/stale/revoked/conflicting authority wrote nothing; no prior entry overwritten; Stage 2 stayed serial.
+- [ ] **AR-A shared controls held:** product repo distinguished from the skills
+      library; ONE question per turn; low-risk decisions batched to one checkpoint,
+      high-risk/authority/irreversible never batched; acceptance never read as
+      implementation authority; previews byte-for-byte; no rejected/already-recorded
+      proposal re-offered; projections refreshed, never contradicting evidence.
+- [ ] The next recommended action is stated in plain language.
+- [ ] Build choices define terms, reasons, costs, pros and cons, and give a context-based recommendation before ONE atomic question; the answer is not action or recording authority.
+
+## Gotchas
+
+- **The duplication tripwire.** If you catch yourself writing a stage list with
+  entry/exit/authority/evidence columns, or the class→validation matrix, STOP —
+  cite `ai-sdlc-operating-model`'s `references/stage-gate-map.md` and
+  `change-classification-gate` instead. A long orchestrator is a failing
+  orchestrator; thin is correct.
+- **Deciding for the user.** Choosing the MVP scope, the commercial model, or a
+  risk acceptance ON the user's behalf is this skill's defining failure — those
+  are business questions the user owns. Surface them; do not resolve them.
+- **Deferring engineering mechanics TO the user.** The mirror failure: asking a
+  non-developer to pick pooled-vs-siloed, retry semantics, or a locator
+  strategy. Decide those via the owning skill; explain in business terms.
+- **Restarting a mid-flight project.** A populated `docs/project-state.md` means
+  discovery already happened — read it and continue. Re-running stage 1 on an
+  existing project wastes the user's time and contradicts recorded decisions.
+- **Assuming terminology.** "Tenant", "migration", "RLS", "CI", "SLO" are not
+  beginner words — each must arrive as a plain-language question or explanation.
+- **Over-gating.** Halting for approval on a docs edit or reversible local change
+  is theater that erodes the real gate. Gate the irreversible; let reversible flow.
+- **Silent scope drift.** A changed decision is a NEW dated entry that flags the
+  deviation, never an overwrite; the stage advances by a new STATE SNAPSHOT, not
+  a header edit. Mutable projections refresh FROM the records — never rewriting
+  them, never contradicting them.
+- **Auto-chaining a manual-only skill.** A manual-only target
+  (`disable-model-invocation: true`) exists to be started by a human. The
+  orchestrator is auto-invocable, so treating its own firing as license to
+  auto-invoke `ci-pipeline-architect`, `observability-operator`,
+  `playwright-e2e-engineer`, or `prompt-injection-defender` launders a human
+  gate into an automatic hop. Explain the boundary and hand the invocation to
+  the user by name.
+- **Acceptance is not authority; a business answer is not write approval.**
+  Scope agreement, spec/design acceptance, and "looks good / proceed" authorize
+  the actual proposal in front of the user. Check whether it includes recording
+  or implementation; preserve an explicit current grant without repeat consent.
+  Acceptance alone adds no unstated authority (see
+  `references/recording-and-authority.md`).
+- **Calling the product repo "the skills library".** A fresh product repo that
+  contains copied `.claude` skills is still the user's product — detect repo
+  role from evidence; never treat the consumer repo as Project Aegis itself.
+
+## Stop Conditions
+
+- **Any irreversible step** — migration, deploy, auth/permission change,
+  deletion, merge, public release. Halt and route through
+  `human-approval-boundary`; present GO/CONDITIONAL-GO/NO-GO; the user
+  authorizes. Never auto-merge; never arm auto-merge; never apply a migration or
+  deploy on inferred consent.
+- **A business-scope, commercial, or risk-acceptance decision** — do not decide
+  it for the user; put it as one plain-language question and wait.
+- **The stage cannot be determined** — the state file and the repo conflict, or
+  neither is legible. Surface the conflict and ask; do not guess a stage.
+- **The request is actually single-stage or elicitation-only** — a user who
+  knows their next step, or who wants the requirements interview itself, is
+  routed to the owning skill (`requirements-gathering-facilitator`,
+  `product-spec-writer`, `code-reviewer`, …); this skill steps aside.
+- **A `docs/project-state.md` write without applicable authorization** — the
+  entry's exact path and content have not been shown (at cold start: the
+  COMPLETE initial document, including the first STATE SNAPSHOT, has not been
+  previewed), or the proposed write exceeds every applicable explicit grant.
+  Preview the complete write and obtain only missing authority. Honor existing
+  grants; a business-question answer alone is never write approval.
+- **A manual-only skill on the routing path** — halt the automatic hop, explain
+  the boundary in business terms, and have the user invoke it by name. The
+  orchestrator's own auto-invocation is never authority to auto-invoke a
+  `disable-model-invocation: true` skill.
+
+## Supporting Files
+
+- [references/project-state-template.md](references/project-state-template.md) —
+  the `docs/project-state.md` schema and copyable template: three append-only
+  dated entry types (STATE SNAPSHOT latest-wins; DECISION with its chosen-over
+  clause; APPROVAL — an `A-*` grant or immutable lifecycle event anchored
+  to immutable evidence), the composed decision-ID + approval-citation patterns,
+  the propose → approve → append (cold-start approved-create) flow, and the
+  immutable-evidence vs mutable-projection split (immutable evidence wins).
+- [references/recording-and-authority.md](references/recording-and-authority.md) —
+  Capability 4's recording + authority discipline: risk-tiered batching of
+  low-risk product decisions, authority kept separate from scope/spec/design
+  acceptance, proposal-fingerprint and already-recorded idempotency, and
+  byte-for-byte exactness. Applied by the contract, not restated in it.
+- `evals/evals.json` — behavior cases: the cold vague-idea happy path, the
+  Stage 1 interactive interview (one question, no question-bank dump,
+  recorded-Stage-1 lag, visible pending-decision batch), the mid-flight
+  state-file edge, the stage-8 decision-driven and Stage 3/9 flag routing edges, and the refusals
+  (no auto-merge, no migration or business-scope decision on inferred consent, a
+  business answer is not write approval).
+- `evals/trigger-evals.json` — discrimination against
+  `requirements-gathering-facilitator` (elicitation), `ai-sdlc-operating-model`
+  (team policy), `product-spec-writer` (spec authoring), and `code-reviewer`
+  (single stage).
