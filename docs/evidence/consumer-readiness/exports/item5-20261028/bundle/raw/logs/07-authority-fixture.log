@@ -1,0 +1,11 @@
+{
+  "root": "C:\\temp\\aegis-item1-authority-20261028-140123",
+  "target_sha256": "feb3242bd9ddb767a7faceee7af8c2f10a836cf63aa9c8aee4bc733e89c0b9c6",
+  "files": 8,
+  "case_files": [
+    "case-1-valid-scope.md",
+    "case-2-late-recorded-revocation.md",
+    "case-3-malformed-target.md",
+    "case-4-duplicate-id.md"
+  ]
+}

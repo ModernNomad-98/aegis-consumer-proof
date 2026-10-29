@@ -1,0 +1,16 @@
+START 20261028-140123
+PS 7.6.6
+OS Microsoft Windows 11 Business 10.0.26200 build 26200
+git git version 2.55.0.windows.5
+python Python 3.14.7
+python_path C:\Python314\python.exe
+worktree_status:
+HEAD 750767b731820782e1c1535230a2ef3b78ec4ea7
+TREE a5260b0d0c2cac86f1f8f2612647ac4a4cba16d7
+BRANCH item1/consumer-starter-deps
+sh_bin True
+sh_usrbin True
+ok
+sh_exit=0
+lsremote:
+aa4ae348fa33a50383fb5b79272b6b9aa663c8c0	refs/heads/main

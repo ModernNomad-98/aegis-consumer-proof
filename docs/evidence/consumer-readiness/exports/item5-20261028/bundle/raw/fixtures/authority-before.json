@@ -1,0 +1,46 @@
+{
+  "root": "C:\\temp\\aegis-item1-authority-20261028-140123",
+  "target_sha256": "feb3242bd9ddb767a7faceee7af8c2f10a836cf63aa9c8aee4bc733e89c0b9c6",
+  "files": [
+    {
+      "path": ".claude/skills/scoped-approval-register/references/register-format.md",
+      "bytes": 7518,
+      "sha256": "ace0fb62e81df2e0a7a28822c67426d23cd0938ee6cfa7cfa6665c41e80521b6"
+    },
+    {
+      "path": ".claude/skills/scoped-approval-register/SKILL.md",
+      "bytes": 11822,
+      "sha256": "a74d2a22579cf93f737725aa0c54197b5d496a9f33a291a93c2cf2073cd7d076"
+    },
+    {
+      "path": "cases/case-1-valid-scope.md",
+      "bytes": 858,
+      "sha256": "7698f9daca8f00d21d0610fd50a9b99db716ab66e6d1a7aa0d147e72dc953d13"
+    },
+    {
+      "path": "cases/case-2-late-recorded-revocation.md",
+      "bytes": 1177,
+      "sha256": "908e515d69b0a3330041535220f7ed8deb6f8eabd01f63510642e66a8988f7e6"
+    },
+    {
+      "path": "cases/case-3-malformed-target.md",
+      "bytes": 1210,
+      "sha256": "e1ba9b64e07d7be51d5f5091beab20e7c89fa1a4750da2e27a857438a665a5d5"
+    },
+    {
+      "path": "cases/case-4-duplicate-id.md",
+      "bytes": 1238,
+      "sha256": "71d141263b6d11dffb213cd30144d5c3e8521bed0e3a20975b7d7b7f4623dc46"
+    },
+    {
+      "path": "docs/fixture-target.md",
+      "bytes": 15,
+      "sha256": "feb3242bd9ddb767a7faceee7af8c2f10a836cf63aa9c8aee4bc733e89c0b9c6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 485,
+      "sha256": "a8bc868cef80720b65edda89a52664a2c41cf55c0b4fb6e6e2110c4f5cb2306d"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "case": "dest-agents-conflict",
+  "source": "C:\\temp\\aegis-src-20261028-140123",
+  "target": "C:\\temp\\aegis-item1-fixtures\\tgt-dest-agents-conflict",
+  "exit_code": 22,
+  "stderr": "exit 22: startup file differs: C:\\temp\\aegis-item1-fixtures\\tgt-dest-agents-conflict\\AGENTS.md\r\n",
+  "stdout": null,
+  "files_before": 48,
+  "files_after": 48,
+  "added": [],
+  "changed": [],
+  "unrelated_unchanged": true,
+  "record_before_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b",
+  "record_after_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b"
+}

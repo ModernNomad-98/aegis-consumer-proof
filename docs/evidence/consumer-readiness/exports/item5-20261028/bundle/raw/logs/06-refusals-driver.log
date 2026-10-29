@@ -1,0 +1,24 @@
+CASE dest-changed-byte exit=31 added=0 changed=0 unrelated_unchanged=True
+  stderr: exit 31: existing installed file differs from the pinned source: .claude/skills/code-reviewer/references/severity-rubric.md
+  stdout: 
+CASE dest-eval exit=20 added=0 changed=0 unrelated_unchanged=True
+  stderr: exit 20: existing skill directory holds a file outside the package: .claude/skills/test-plan-designer/evals/evals.json
+  stdout: 
+CASE dest-agents-conflict exit=22 added=0 changed=0 unrelated_unchanged=True
+  stderr: exit 22: startup file differs: C:\temp\aegis-item1-fixtures\tgt-dest-agents-conflict\AGENTS.md
+  stdout: 
+CASE dest-foreign-file exit=20 added=0 changed=0 unrelated_unchanged=True
+  stderr: exit 20: existing skill directory holds a file outside the package: .claude/skills/plan-of-record-author/references/extra.md
+  stdout: 
+CASE src-changed-byte exit=31 added=41 changed=0 unrelated_unchanged=True
+  stderr: exit 31: aggregate e5be10ad15ae2c943aee48feceac2c11033ae188724121827742e48a15c00a1d does not match the published fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699
+  stdout: 
+CASE src-missing-ref exit=21 added=0 changed=0 unrelated_unchanged=True
+  stderr: exit 21: missing source file: C:\temp\aegis-item1-fixtures\src-missing-ref\.claude\skills\scoped-approval-register\references\register-format.md
+  stdout: 
+CASE src-manifest-json exit=1 added=41 changed=0 unrelated_unchanged=True
+  stderr: ConvertFrom-Json: C:\src\Project Aegis\_A\remediation\handshake\item1-stage-e\raw\fixtures\install-starter.ps1:210
+  stdout: 
+CASE src-manifest-shape exit=31 added=41 changed=0 unrelated_unchanged=True
+  stderr: exit 31: no unique manifest entry for agent-startup-context-gate
+  stdout: 

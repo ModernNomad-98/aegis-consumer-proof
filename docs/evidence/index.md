@@ -53,3 +53,14 @@ repository branch reference) were replaced with neutral descriptions; the file's
 Redaction notice lists the categories. The verbatim owner text is retained in a local,
 non-public record. Redaction is forward-only: the unredacted text remains in earlier commits
 `1e754df7`, `66c602bd` and `15a83b20`.
+
+## Exports
+
+| Artifact | SHA-256 | Bytes | LF | Purpose |
+| --- | --- | --- | --- | --- |
+| `docs/evidence/consumer-readiness/exports/item5-20261028/README.md` | `972f27299a193b673633c9e7af5fa38222fff4e56dca7eb3d683c585bb1ad0d8` | 6830 | 111 | Project Aegis Item 5 native-starter evidence (2026-10-28), published as a **redacted derivative**: the log line carrying the local account name and an unrelated local project path is deleted, and the account's 8.3 short-name alias is masked with a constant on 148 lines across two test logs. 78 evidence files, 310,293 to 310,629 B, 3 files changed and 75 byte-identical, manifest rebuilt; Apache-2.0 LICENSE and NOTICE included verbatim; a fresh independent I5-REVIEWER session (Claude Code, a different vendor and model from the DeepSeek builder) verified zero identifier bytes before commit. |
+
+The 78-file bundle is bound by `docs/evidence/consumer-readiness/exports/item5-20261028/manifest.sha256` (8,277 B, SHA-256
+`16532a341019c568fe9e8d2f54102283eebb6ba34b5538be46c0d2fa19b04f6c`) and, file by file, by
+`DERIVATIVE-MANIFEST.tsv` with before/after digests. Those per-file values are deliberately not
+restated here, for the reason given above; the row above binds the README only.

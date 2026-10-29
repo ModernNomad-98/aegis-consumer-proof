@@ -1,0 +1,4 @@
+[item1/consumer-starter-deps 3a504c83] docs(starter): record v2 native install evidence (Stage E)
+ Date: Wed Oct 28 14:10:47 2026 -0700
+ 4 files changed, 393 insertions(+), 21 deletions(-)
+ create mode 100644 docs/evidence/consumer-readiness/local-starter-v2.md

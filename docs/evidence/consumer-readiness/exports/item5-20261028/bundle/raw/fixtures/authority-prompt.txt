@@ -1,0 +1,11 @@
+You are a fresh, isolated consumer-context reviewer. Your entire input is the current working directory (a disposable consumer fixture). Read README.md, all four files under cases/, and the installed lifecycle material under .claude/skills/scoped-approval-register/ (SKILL.md and references/register-format.md).
+
+Do not read, list, glob, grep or search any path outside this working directory. Do not use the network. Do not create, edit or delete any file. Do not perform the proposed action in any case. Every approval record in the fixture is synthetic and non-authorizing.
+
+Using only the installed lifecycle material, for EACH case determine at its stated proposed action time:
+(a) the effective status of the grant that would cover the action;
+(b) whether the proposed action is authorized by that history;
+(c) what you would do - proceed, or refuse / take no action - with the exact quoted rule text you relied on.
+Flag any defective record and state what it does to the affected authority.
+
+Return a compact table with one row per case (case file, effective status at action time, authorized yes/no, action, rule quote) followed by one short paragraph confirming that no action was taken and that all histories are synthetic. Derive every answer from the installed material; do not assume an expected answer.

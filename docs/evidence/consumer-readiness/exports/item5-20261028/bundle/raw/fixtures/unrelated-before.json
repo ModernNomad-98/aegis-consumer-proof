@@ -1,0 +1,32 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 62,
+    "sha256": "43871f71dd859ed2dd23206afb59e1b8d25b2637a3e0128291fcbccae02b4431"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 6,
+    "sha256": "fe54d1fd9b0ea946a38c56b98ec8ad8dff0ce784bc926b25433e44d2703f6f0f"
+  },
+  {
+    "path": "notes/unrelated.txt",
+    "bytes": 45,
+    "sha256": "b168f87bc2d02f702b1a76e692bca8aeafc1aa88c2f7479a06171a9b2439500e"
+  },
+  {
+    "path": ".claude/settings.json",
+    "bytes": 28,
+    "sha256": "3f528b91f0e9dfc5e6af72fa8cf17b69b87c18b964cc4b2e1f0d8a4baf5d236f"
+  },
+  {
+    "path": ".claude/skills/my-own-skill/SKILL.md",
+    "bytes": 24,
+    "sha256": "102762b86bbd05103caafbfcb80847fa5af83653a3b213eea8f0fe9ce99037f8"
+  },
+  {
+    "path": "src/app.py",
+    "bytes": 8,
+    "sha256": "d287bb7f9d15abdc5b6e98536263815744b6ef21c8f3c839fc434ca70d8efe99"
+  }
+]

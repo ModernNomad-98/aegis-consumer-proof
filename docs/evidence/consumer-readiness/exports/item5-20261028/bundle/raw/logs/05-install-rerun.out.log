@@ -1,0 +1,8 @@
+P8: count_check=PASS installed=41 extra=0
+P8: manifest_pins=PASS 18/18
+P8: source_pins=PASS 23/23
+P8: siblings=PASS absent=0
+P8: forbidden=PASS none
+P9: rows=41 serialized_bytes=5420 aggregate=fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699 (matches the published value)
+P9: install record already present, left unchanged: C:\temp\aegis-item1-consumer-20261028-140123\docs\consumer-install-record.md
+OK: 41 installed files; closure, pins, siblings, eval and aggregate checks passed

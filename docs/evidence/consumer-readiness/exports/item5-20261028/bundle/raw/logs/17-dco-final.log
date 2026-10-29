@@ -1,0 +1,7 @@
+Checking DCO sign-off over aa4ae348..HEAD ...
+
+  SIGNED  3a504c83827b  DeepSeek V4 Flash <deepseek-v4-flash@users.noreply.github.com>  docs(starter): record v2 native install evidence (Stage E)
+  SIGNED  750767b73182  DeepSeek V4 Flash <deepseek-v4-flash@users.noreply.github.com>  docs(starter): correct v2 counts, pin wording and coverage claims (Stage D F1-F9)
+  SIGNED  5f10203859b2  DeepSeek V4 Flash <deepseek-v4-flash@users.noreply.github.com>  docs(starter): install the composed approval-register files (v2, 41 files)
+
+OK: 3 commit(s) checked, all signed off or exempt.

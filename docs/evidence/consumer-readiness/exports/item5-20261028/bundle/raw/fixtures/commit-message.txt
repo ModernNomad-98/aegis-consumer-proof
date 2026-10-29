@@ -1,0 +1,17 @@
+docs(starter): record v2 native install evidence (Stage E)
+
+Runs the published v2 prerequisite/copy/verify route on one verified
+Windows host and records the actual output: exit 0, 41 files, 18/18
+manifest pins, 23/23 source pins, aggregate fcff1124...b699 over 5,420
+serialized bytes, install record 6,816 B. Adds disposable integrity
+refusals (changed destination byte, eval material, conflicting AGENTS.md,
+foreign file, changed source byte, missing source reference, malformed
+manifest) and a fresh isolated consumer-context reading of the installed
+lifecycle material (valid scope vs late-recorded revocation, malformed
+target, duplicate IDs). Aligns the page and both READMEs where they said
+the v2 native checks were UNRUN; the pinned selectors, harness constants,
+test behaviour and the v1 record are unchanged.
+
+Model: DeepSeek V4 Flash
+
+Signed-off-by: DeepSeek V4 Flash <deepseek-v4-flash@users.noreply.github.com>

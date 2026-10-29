@@ -1,0 +1,12 @@
+DEST C:\temp\aegis-item1-consumer-20261028-140123
+SOURCE C:\temp\aegis-src-20261028-140123
+P1: count=0 classification=Role B consumer
+P2: owner record present on both --local keys (values synthetic)
+P2: author=DeepSeek V4 Flash <deepseek-v4-flash@users.noreply.github.com> 1793221319 -0700
+P2: committer=DeepSeek V4 Flash <deepseek-v4-flash@users.noreply.github.com> 1793221319 -0700
+P2: commit identity differs from the owner record; continue
+Cloning into 'C:\temp\aegis-src-20261028-140123'...
+HEAD is now at ffb040c7 Merge pull request #944 from ModernNomad-98/fix/942-total-guard-regressions
+P3: HEAD=ffb040c7a363648856475280646bbd142dfabe4e
+P3: TREE=88a5aee4ad928a49c2fb945032585843ec652da7
+P3: status clean; w/crlf matches=0

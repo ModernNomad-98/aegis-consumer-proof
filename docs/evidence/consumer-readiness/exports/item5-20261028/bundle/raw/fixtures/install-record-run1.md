@@ -1,0 +1,53 @@
+# Consumer install record - starter package v2
+
+- Source: ModernNomad-98/Project-Aegis at commit ffb040c7a363648856475280646bbd142dfabe4e (tree 88a5aee4ad928a49c2fb945032585843ec652da7), detached HEAD, clean.
+- Installed: 2026-10-28T14:02:22-07:00
+- Tools: PowerShell 7.6.6; git version 2.55.0.windows.5; sh C:\Program Files\Git\bin\sh.exe
+- Owner record: present on both keys (values not recorded)
+- Rows: 41; serialized bytes: 5420; aggregate: fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699
+- Result: P5-P8 exit 0. A later mismatch in any row is a stop, not a warning.
+- Five non-resolving source-repo citations are disclosed in docs/consumer-starter-package.md section 3: docs/skills-catalog.md, docs/paths/design-and-build-ui.md, docs/paths/add-ai-safely.md, docs/paths/release-with-agents.md, docs/acceptance/scenario-a-runbook.md
+
+| Path (consumer-relative) | Bytes | LF | SHA-256 |
+| --- | --- | --- | --- |
+| .claude/skills/agent-startup-context-gate/SKILL.md | 21084 | 336 | a157d30d5b8eac48243906d2e46716e6bc37a0591e648b062a0430f7da3c35ee |
+| .claude/skills/agent-startup-context-gate/references/context-source-checklist.md | 3325 | 59 | 79383159c3b45357eb9a236eb0d984b784f35362f5ac40ce1f6083c3acfb8563 |
+| .claude/skills/agent-startup-context-gate/references/shared-local-resource-coordination.md | 16797 | 297 | b3cc865f02d2a1042252939d21eb7c27805fe48b7e0637de70c361be99fee9a8 |
+| .claude/skills/ai-sdlc-operating-model/SKILL.md | 9650 | 167 | 604e4d5aee14a88ec124a369fd4f7600d049e42bfef49f780cf858086426682e |
+| .claude/skills/ai-sdlc-operating-model/references/stage-gate-map.md | 5596 | 65 | 9f17997c2a0d5fdd68138e9620a1f1c07060a93022974e710a6f62f6a1d901f8 |
+| .claude/skills/architecture-designer/SKILL.md | 8491 | 158 | a6f56df1da1ed960d057290c905766fcd1a8266cd7cb13a0185d095ab342ec33 |
+| .claude/skills/architecture-designer/references/architecture-artifacts.md | 3110 | 66 | e5c6d07ffb1479f7e048b41f515f2131f40480027836dbfe594d280262b0891e |
+| .claude/skills/change-classification-gate/SKILL.md | 7185 | 141 | 08d91a834460beebc9c66fa896b8b422f064bf1d7524f6e5b1512cda3afdc996 |
+| .claude/skills/change-classification-gate/references/classification-matrix.md | 3781 | 49 | 0362e2eebc11b1a7d35282c8deec6d29021433f847782965e08ceac43906c7b4 |
+| .claude/skills/code-reviewer/SKILL.md | 9404 | 165 | 6238b67b7b90fcbb26fcc45300562efa9e290a9d3870548e37bedaabbc76449a |
+| .claude/skills/code-reviewer/references/severity-rubric.md | 5151 | 86 | 017c223f84cb49a57211e5d1096b9e9210a135c51419db1ea423ef05f26fb491 |
+| .claude/skills/domain-modeler/SKILL.md | 7031 | 129 | 4001c1edff7ed32025f31e4d69c656ad2610a2fd0a12aade2fb25adc49e09c37 |
+| .claude/skills/domain-modeler/references/domain-artifacts.md | 3737 | 77 | eb62149495d685c8f3fa6475da65d94d15ca0dce6714d9af37a7a64974426535 |
+| .claude/skills/human-approval-boundary/SKILL.md | 8301 | 146 | 4efcb7251333c9da12b1d1909c4a7e0d7c09de73220e230519cceadb6af648a8 |
+| .claude/skills/human-approval-boundary/references/consumer-manual-only-policy.md | 3764 | 35 | cd719096fef8fc2f4384122709f882265f62d38b9e9359647a57e27c03d8f33d |
+| .claude/skills/phased-work-handoff-designer/SKILL.md | 10070 | 175 | 12e0caf60ec50d75b6370292e027b3926caddeecd2c77cd51a58d33e817984d4 |
+| .claude/skills/phased-work-handoff-designer/references/handoff-sheet.md | 2433 | 80 | d976510390adc6aec332bc3b19b80ece7692e2ec1e9025108a0b9340307e09fe |
+| .claude/skills/plan-audit-reviewer/SKILL.md | 7353 | 72 | e055fce01fc55371c331ce71af4b0721397d78ec1ba2ca2fe013899846b1af86 |
+| .claude/skills/plan-audit-reviewer/references/plan-audit-checklist.md | 2299 | 25 | 27928bd205d5b5a4c57caacce72b481c2b9841f5b8ce01e97c9da18c97550fb3 |
+| .claude/skills/plan-of-record-author/SKILL.md | 6244 | 71 | 86d2d6e3d52ad96d9f165041a6219c0d0bbce39d1c352b523f0c4ad2dd697634 |
+| .claude/skills/plan-of-record-author/references/plan-of-record-package.md | 1973 | 25 | a2509f23892bf16eb43bbe1130bc4ac5eb2221bb5f529252e141c34290e492be |
+| .claude/skills/product-spec-writer/SKILL.md | 13519 | 234 | a8fef31f8992436dd2fb75cf9575b293373dda45362fa950481573299d1185cc |
+| .claude/skills/product-spec-writer/references/product-spec-sheet.md | 3940 | 111 | 1452cb673884eb106f73a2e0221a17de1d1fd9b30b2c87b841355f7e4fc8c993 |
+| .claude/skills/project-orchestrator/SKILL.md | 42794 | 494 | 3ef1f0ba8b350385aaf5b0a2929c38d2e3f24c176875635129fa139ef22f0584 |
+| .claude/skills/project-orchestrator/references/project-state-template.md | 22454 | 357 | 902f982e9b1314f644aa341319c129757c5461c606edbda8264943c5de4e22d5 |
+| .claude/skills/project-orchestrator/references/recording-and-authority.md | 10024 | 180 | bdcf2bb67f27f8b617566f7c44cd9d3223cc064baa2f4a73b2856398db7cdaa1 |
+| .claude/skills/release-readiness-reviewer/SKILL.md | 10663 | 192 | 9d1cd8091385e537f823c6b8d78be4b180f2599fc354129ec8f735389dd5d305 |
+| .claude/skills/release-readiness-reviewer/references/readiness-evidence.md | 3645 | 48 | d03ee7b15768ee0498024bedbce58a98f9d2c8201cb6be23128be9e8bccc71ca |
+| .claude/skills/requirements-gathering-facilitator/SKILL.md | 16061 | 271 | db5c6795ae85bbf07faa5a791702e76edf09a0305399600f56d34975029b8c37 |
+| .claude/skills/requirements-gathering-facilitator/references/elicitation-sheet.md | 6524 | 174 | fbd4f381627d19b6f406458644fb27305cdb5169c5b3e9f6f66c1779378aea7b |
+| .claude/skills/scoped-approval-register/SKILL.md | 11822 | 193 | a74d2a22579cf93f737725aa0c54197b5d496a9f33a291a93c2cf2073cd7d076 |
+| .claude/skills/scoped-approval-register/references/register-format.md | 7518 | 136 | ace0fb62e81df2e0a7a28822c67426d23cd0938ee6cfa7cfa6665c41e80521b6 |
+| .claude/skills/screenshot-evidence-planner/SKILL.md | 10878 | 183 | b0910f9003a3479d7753f4da608dfd9b275ab8ca5d0157c7adb8e5d8813a8c1f |
+| .claude/skills/screenshot-evidence-planner/references/evidence-rules.md | 3389 | 66 | d7a06498ddfcb31798efa5d35f966121ec089b31882805b7bb4b73ac7b9f85d7 |
+| .claude/skills/tech-spec-writer/SKILL.md | 10865 | 191 | cd1ee59dc53452de93404ceb2c1afdea49f64d2a1576dd1ba3621d93da3806f5 |
+| .claude/skills/tech-spec-writer/references/tech-spec-sheet.md | 2935 | 72 | d7c7757942fc9a9e954fa241d595c95339b20f9c531eab8a00572550f4c99323 |
+| .claude/skills/test-plan-designer/SKILL.md | 9662 | 158 | beba751405cd1cccc7dd1a3c5c9f26a833dc192e4ca08a8eb163d8db333713ba |
+| .claude/skills/test-plan-designer/references/qa-scenario-extensions.md | 2450 | 32 | 16058d2721a57c3e74c8175b9c627307a50a3f5678e311a44cf51b599b32ef4b |
+| .claude/skills/test-plan-designer/references/test-plan-template.md | 5256 | 77 | d2561d221cf018875f5b044284e0dc0f3476a42741a7818af83d765896e70e53 |
+| AGENTS.md | 25228 | 231 | 02628bd7a224ec8dbb1534baccbc18fe1f805b225f644d49b0003b1d42d862fc |
+| CLAUDE.md | 2687 | 17 | 760afd104f1b058cfe08dac6cf2648c5391eace1db5e7cd86ee7ed6cd8cafb6c |

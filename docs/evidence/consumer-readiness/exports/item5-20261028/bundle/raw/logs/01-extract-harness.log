@@ -1,0 +1,13 @@
+{
+  "page": "C:\\src\\Project Aegis\\_A\\remediation\\handshake\\four-priority-item1\\docs\\consumer-starter-package.md",
+  "fence_start_line_1based": 672,
+  "param_line_1based": 673,
+  "closing_fence_line_1based": 967,
+  "body_bytes": 17305,
+  "body_lf": 294,
+  "body_cr": 0,
+  "sha256": "78f8a2f93bb46f274d6bc59027e69108bd1ebd416b9b0661d521a69c5753bf86",
+  "first_line": "param(",
+  "last_line": "exit 0",
+  "starts_bom": false
+}

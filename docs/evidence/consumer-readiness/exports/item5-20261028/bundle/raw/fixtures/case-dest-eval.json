@@ -1,0 +1,15 @@
+{
+  "case": "dest-eval",
+  "source": "C:\\temp\\aegis-src-20261028-140123",
+  "target": "C:\\temp\\aegis-item1-fixtures\\tgt-dest-eval",
+  "exit_code": 20,
+  "stderr": "exit 20: existing skill directory holds a file outside the package: .claude/skills/test-plan-designer/evals/evals.json\r\n",
+  "stdout": null,
+  "files_before": 49,
+  "files_after": 49,
+  "added": [],
+  "changed": [],
+  "unrelated_unchanged": true,
+  "record_before_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b",
+  "record_after_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b"
+}

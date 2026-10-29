@@ -1,0 +1,26 @@
+{
+  "package_rows_parsed": 41,
+  "installed_rows": 41,
+  "skills": 18,
+  "total_bytes": 369093,
+  "total_lf": 5841,
+  "aggregate": "fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699",
+  "published_aggregate": "fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699",
+  "aggregate_matches": true,
+  "serialized_bytes": 5420,
+  "serialized_bytes_expected": 5420,
+  "row_problems": [],
+  "extra_files_in_skill_dirs": [],
+  "destination_files_excluding_git": 48,
+  "record_bytes": 6816,
+  "record_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b",
+  "record_aggregate_line": [
+    "41",
+    "5420",
+    "fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699"
+  ],
+  "record_rows": 41,
+  "record_table_mismatches": [],
+  "record_row_order_matches_ordinal": true,
+  "unrelated_unchanged": true
+}

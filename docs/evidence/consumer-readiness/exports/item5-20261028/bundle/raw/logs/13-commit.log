@@ -1,0 +1,3 @@
+[item1/consumer-starter-deps 6f361067] docs(starter): record v2 native install evidence (Stage E)
+ 4 files changed, 392 insertions(+), 21 deletions(-)
+ create mode 100644 docs/evidence/consumer-readiness/local-starter-v2.md

@@ -1,0 +1,15 @@
+{
+  "case": "dest-changed-byte",
+  "source": "C:\\temp\\aegis-src-20261028-140123",
+  "target": "C:\\temp\\aegis-item1-fixtures\\tgt-dest-changed-byte",
+  "exit_code": 31,
+  "stderr": "exit 31: existing installed file differs from the pinned source: .claude/skills/code-reviewer/references/severity-rubric.md\r\n",
+  "stdout": null,
+  "files_before": 48,
+  "files_after": 48,
+  "added": [],
+  "changed": [],
+  "unrelated_unchanged": true,
+  "record_before_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b",
+  "record_after_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b"
+}

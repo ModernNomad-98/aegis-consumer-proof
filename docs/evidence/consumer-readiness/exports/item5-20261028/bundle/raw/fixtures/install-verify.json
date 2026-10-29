@@ -1,0 +1,381 @@
+{
+  "package_rows_parsed": 41,
+  "installed_rows": 41,
+  "skills": 18,
+  "total_bytes": 369093,
+  "total_lf": 5841,
+  "aggregate": "fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699",
+  "published_aggregate": "fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699",
+  "aggregate_matches": true,
+  "serialized_bytes": 5420,
+  "serialized_bytes_expected": 5420,
+  "row_problems": [],
+  "extra_files_in_skill_dirs": [],
+  "destination_files_excluding_git": 48,
+  "record_bytes": 6816,
+  "record_sha256": "e21e657ea3ba9d021f1f7a6a0b24502e756ecbb04ecd60797df1d38ab64dee5b",
+  "record_aggregate_line": [
+    "41",
+    "5420",
+    "fcff1124d9d15e7d7230fd317350e0eb3b097b453bb6b911cdc1e2485525b699"
+  ],
+  "record_rows": 41,
+  "record_table_mismatches": [],
+  "record_row_order_matches_ordinal": true,
+  "unrelated_unchanged": true,
+  "unrelated_before": [
+    {
+      "path": "README.md",
+      "bytes": 62,
+      "sha256": "43871f71dd859ed2dd23206afb59e1b8d25b2637a3e0128291fcbccae02b4431"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 6,
+      "sha256": "fe54d1fd9b0ea946a38c56b98ec8ad8dff0ce784bc926b25433e44d2703f6f0f"
+    },
+    {
+      "path": "notes/unrelated.txt",
+      "bytes": 45,
+      "sha256": "b168f87bc2d02f702b1a76e692bca8aeafc1aa88c2f7479a06171a9b2439500e"
+    },
+    {
+      "path": ".claude/settings.json",
+      "bytes": 28,
+      "sha256": "3f528b91f0e9dfc5e6af72fa8cf17b69b87c18b964cc4b2e1f0d8a4baf5d236f"
+    },
+    {
+      "path": ".claude/skills/my-own-skill/SKILL.md",
+      "bytes": 24,
+      "sha256": "102762b86bbd05103caafbfcb80847fa5af83653a3b213eea8f0fe9ce99037f8"
+    },
+    {
+      "path": "src/app.py",
+      "bytes": 8,
+      "sha256": "d287bb7f9d15abdc5b6e98536263815744b6ef21c8f3c839fc434ca70d8efe99"
+    }
+  ],
+  "unrelated_after": [
+    {
+      "path": "README.md",
+      "bytes": 62,
+      "sha256": "43871f71dd859ed2dd23206afb59e1b8d25b2637a3e0128291fcbccae02b4431"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 6,
+      "sha256": "fe54d1fd9b0ea946a38c56b98ec8ad8dff0ce784bc926b25433e44d2703f6f0f"
+    },
+    {
+      "path": "notes/unrelated.txt",
+      "bytes": 45,
+      "sha256": "b168f87bc2d02f702b1a76e692bca8aeafc1aa88c2f7479a06171a9b2439500e"
+    },
+    {
+      "path": ".claude/settings.json",
+      "bytes": 28,
+      "sha256": "3f528b91f0e9dfc5e6af72fa8cf17b69b87c18b964cc4b2e1f0d8a4baf5d236f"
+    },
+    {
+      "path": ".claude/skills/my-own-skill/SKILL.md",
+      "bytes": 24,
+      "sha256": "102762b86bbd05103caafbfcb80847fa5af83653a3b213eea8f0fe9ce99037f8"
+    },
+    {
+      "path": "src/app.py",
+      "bytes": 8,
+      "sha256": "d287bb7f9d15abdc5b6e98536263815744b6ef21c8f3c839fc434ca70d8efe99"
+    }
+  ],
+  "installed_paths": [
+    ".claude/skills/agent-startup-context-gate/SKILL.md",
+    ".claude/skills/agent-startup-context-gate/references/context-source-checklist.md",
+    ".claude/skills/agent-startup-context-gate/references/shared-local-resource-coordination.md",
+    ".claude/skills/ai-sdlc-operating-model/SKILL.md",
+    ".claude/skills/ai-sdlc-operating-model/references/stage-gate-map.md",
+    ".claude/skills/architecture-designer/SKILL.md",
+    ".claude/skills/architecture-designer/references/architecture-artifacts.md",
+    ".claude/skills/change-classification-gate/SKILL.md",
+    ".claude/skills/change-classification-gate/references/classification-matrix.md",
+    ".claude/skills/code-reviewer/SKILL.md",
+    ".claude/skills/code-reviewer/references/severity-rubric.md",
+    ".claude/skills/domain-modeler/SKILL.md",
+    ".claude/skills/domain-modeler/references/domain-artifacts.md",
+    ".claude/skills/human-approval-boundary/SKILL.md",
+    ".claude/skills/human-approval-boundary/references/consumer-manual-only-policy.md",
+    ".claude/skills/phased-work-handoff-designer/SKILL.md",
+    ".claude/skills/phased-work-handoff-designer/references/handoff-sheet.md",
+    ".claude/skills/plan-audit-reviewer/SKILL.md",
+    ".claude/skills/plan-audit-reviewer/references/plan-audit-checklist.md",
+    ".claude/skills/plan-of-record-author/SKILL.md",
+    ".claude/skills/plan-of-record-author/references/plan-of-record-package.md",
+    ".claude/skills/product-spec-writer/SKILL.md",
+    ".claude/skills/product-spec-writer/references/product-spec-sheet.md",
+    ".claude/skills/project-orchestrator/SKILL.md",
+    ".claude/skills/project-orchestrator/references/project-state-template.md",
+    ".claude/skills/project-orchestrator/references/recording-and-authority.md",
+    ".claude/skills/release-readiness-reviewer/SKILL.md",
+    ".claude/skills/release-readiness-reviewer/references/readiness-evidence.md",
+    ".claude/skills/requirements-gathering-facilitator/SKILL.md",
+    ".claude/skills/requirements-gathering-facilitator/references/elicitation-sheet.md",
+    ".claude/skills/scoped-approval-register/SKILL.md",
+    ".claude/skills/scoped-approval-register/references/register-format.md",
+    ".claude/skills/screenshot-evidence-planner/SKILL.md",
+    ".claude/skills/screenshot-evidence-planner/references/evidence-rules.md",
+    ".claude/skills/tech-spec-writer/SKILL.md",
+    ".claude/skills/tech-spec-writer/references/tech-spec-sheet.md",
+    ".claude/skills/test-plan-designer/SKILL.md",
+    ".claude/skills/test-plan-designer/references/qa-scenario-extensions.md",
+    ".claude/skills/test-plan-designer/references/test-plan-template.md",
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "rows": [
+    {
+      "path": ".claude/skills/agent-startup-context-gate/SKILL.md",
+      "bytes": 21084,
+      "lf": 336,
+      "sha256": "a157d30d5b8eac48243906d2e46716e6bc37a0591e648b062a0430f7da3c35ee"
+    },
+    {
+      "path": ".claude/skills/agent-startup-context-gate/references/context-source-checklist.md",
+      "bytes": 3325,
+      "lf": 59,
+      "sha256": "79383159c3b45357eb9a236eb0d984b784f35362f5ac40ce1f6083c3acfb8563"
+    },
+    {
+      "path": ".claude/skills/agent-startup-context-gate/references/shared-local-resource-coordination.md",
+      "bytes": 16797,
+      "lf": 297,
+      "sha256": "b3cc865f02d2a1042252939d21eb7c27805fe48b7e0637de70c361be99fee9a8"
+    },
+    {
+      "path": ".claude/skills/ai-sdlc-operating-model/SKILL.md",
+      "bytes": 9650,
+      "lf": 167,
+      "sha256": "604e4d5aee14a88ec124a369fd4f7600d049e42bfef49f780cf858086426682e"
+    },
+    {
+      "path": ".claude/skills/ai-sdlc-operating-model/references/stage-gate-map.md",
+      "bytes": 5596,
+      "lf": 65,
+      "sha256": "9f17997c2a0d5fdd68138e9620a1f1c07060a93022974e710a6f62f6a1d901f8"
+    },
+    {
+      "path": ".claude/skills/architecture-designer/SKILL.md",
+      "bytes": 8491,
+      "lf": 158,
+      "sha256": "a6f56df1da1ed960d057290c905766fcd1a8266cd7cb13a0185d095ab342ec33"
+    },
+    {
+      "path": ".claude/skills/architecture-designer/references/architecture-artifacts.md",
+      "bytes": 3110,
+      "lf": 66,
+      "sha256": "e5c6d07ffb1479f7e048b41f515f2131f40480027836dbfe594d280262b0891e"
+    },
+    {
+      "path": ".claude/skills/change-classification-gate/SKILL.md",
+      "bytes": 7185,
+      "lf": 141,
+      "sha256": "08d91a834460beebc9c66fa896b8b422f064bf1d7524f6e5b1512cda3afdc996"
+    },
+    {
+      "path": ".claude/skills/change-classification-gate/references/classification-matrix.md",
+      "bytes": 3781,
+      "lf": 49,
+      "sha256": "0362e2eebc11b1a7d35282c8deec6d29021433f847782965e08ceac43906c7b4"
+    },
+    {
+      "path": ".claude/skills/code-reviewer/SKILL.md",
+      "bytes": 9404,
+      "lf": 165,
+      "sha256": "6238b67b7b90fcbb26fcc45300562efa9e290a9d3870548e37bedaabbc76449a"
+    },
+    {
+      "path": ".claude/skills/code-reviewer/references/severity-rubric.md",
+      "bytes": 5151,
+      "lf": 86,
+      "sha256": "017c223f84cb49a57211e5d1096b9e9210a135c51419db1ea423ef05f26fb491"
+    },
+    {
+      "path": ".claude/skills/domain-modeler/SKILL.md",
+      "bytes": 7031,
+      "lf": 129,
+      "sha256": "4001c1edff7ed32025f31e4d69c656ad2610a2fd0a12aade2fb25adc49e09c37"
+    },
+    {
+      "path": ".claude/skills/domain-modeler/references/domain-artifacts.md",
+      "bytes": 3737,
+      "lf": 77,
+      "sha256": "eb62149495d685c8f3fa6475da65d94d15ca0dce6714d9af37a7a64974426535"
+    },
+    {
+      "path": ".claude/skills/human-approval-boundary/SKILL.md",
+      "bytes": 8301,
+      "lf": 146,
+      "sha256": "4efcb7251333c9da12b1d1909c4a7e0d7c09de73220e230519cceadb6af648a8"
+    },
+    {
+      "path": ".claude/skills/human-approval-boundary/references/consumer-manual-only-policy.md",
+      "bytes": 3764,
+      "lf": 35,
+      "sha256": "cd719096fef8fc2f4384122709f882265f62d38b9e9359647a57e27c03d8f33d"
+    },
+    {
+      "path": ".claude/skills/phased-work-handoff-designer/SKILL.md",
+      "bytes": 10070,
+      "lf": 175,
+      "sha256": "12e0caf60ec50d75b6370292e027b3926caddeecd2c77cd51a58d33e817984d4"
+    },
+    {
+      "path": ".claude/skills/phased-work-handoff-designer/references/handoff-sheet.md",
+      "bytes": 2433,
+      "lf": 80,
+      "sha256": "d976510390adc6aec332bc3b19b80ece7692e2ec1e9025108a0b9340307e09fe"
+    },
+    {
+      "path": ".claude/skills/plan-audit-reviewer/SKILL.md",
+      "bytes": 7353,
+      "lf": 72,
+      "sha256": "e055fce01fc55371c331ce71af4b0721397d78ec1ba2ca2fe013899846b1af86"
+    },
+    {
+      "path": ".claude/skills/plan-audit-reviewer/references/plan-audit-checklist.md",
+      "bytes": 2299,
+      "lf": 25,
+      "sha256": "27928bd205d5b5a4c57caacce72b481c2b9841f5b8ce01e97c9da18c97550fb3"
+    },
+    {
+      "path": ".claude/skills/plan-of-record-author/SKILL.md",
+      "bytes": 6244,
+      "lf": 71,
+      "sha256": "86d2d6e3d52ad96d9f165041a6219c0d0bbce39d1c352b523f0c4ad2dd697634"
+    },
+    {
+      "path": ".claude/skills/plan-of-record-author/references/plan-of-record-package.md",
+      "bytes": 1973,
+      "lf": 25,
+      "sha256": "a2509f23892bf16eb43bbe1130bc4ac5eb2221bb5f529252e141c34290e492be"
+    },
+    {
+      "path": ".claude/skills/product-spec-writer/SKILL.md",
+      "bytes": 13519,
+      "lf": 234,
+      "sha256": "a8fef31f8992436dd2fb75cf9575b293373dda45362fa950481573299d1185cc"
+    },
+    {
+      "path": ".claude/skills/product-spec-writer/references/product-spec-sheet.md",
+      "bytes": 3940,
+      "lf": 111,
+      "sha256": "1452cb673884eb106f73a2e0221a17de1d1fd9b30b2c87b841355f7e4fc8c993"
+    },
+    {
+      "path": ".claude/skills/project-orchestrator/SKILL.md",
+      "bytes": 42794,
+      "lf": 494,
+      "sha256": "3ef1f0ba8b350385aaf5b0a2929c38d2e3f24c176875635129fa139ef22f0584"
+    },
+    {
+      "path": ".claude/skills/project-orchestrator/references/project-state-template.md",
+      "bytes": 22454,
+      "lf": 357,
+      "sha256": "902f982e9b1314f644aa341319c129757c5461c606edbda8264943c5de4e22d5"
+    },
+    {
+      "path": ".claude/skills/project-orchestrator/references/recording-and-authority.md",
+      "bytes": 10024,
+      "lf": 180,
+      "sha256": "bdcf2bb67f27f8b617566f7c44cd9d3223cc064baa2f4a73b2856398db7cdaa1"
+    },
+    {
+      "path": ".claude/skills/release-readiness-reviewer/SKILL.md",
+      "bytes": 10663,
+      "lf": 192,
+      "sha256": "9d1cd8091385e537f823c6b8d78be4b180f2599fc354129ec8f735389dd5d305"
+    },
+    {
+      "path": ".claude/skills/release-readiness-reviewer/references/readiness-evidence.md",
+      "bytes": 3645,
+      "lf": 48,
+      "sha256": "d03ee7b15768ee0498024bedbce58a98f9d2c8201cb6be23128be9e8bccc71ca"
+    },
+    {
+      "path": ".claude/skills/requirements-gathering-facilitator/SKILL.md",
+      "bytes": 16061,
+      "lf": 271,
+      "sha256": "db5c6795ae85bbf07faa5a791702e76edf09a0305399600f56d34975029b8c37"
+    },
+    {
+      "path": ".claude/skills/requirements-gathering-facilitator/references/elicitation-sheet.md",
+      "bytes": 6524,
+      "lf": 174,
+      "sha256": "fbd4f381627d19b6f406458644fb27305cdb5169c5b3e9f6f66c1779378aea7b"
+    },
+    {
+      "path": ".claude/skills/scoped-approval-register/SKILL.md",
+      "bytes": 11822,
+      "lf": 193,
+      "sha256": "a74d2a22579cf93f737725aa0c54197b5d496a9f33a291a93c2cf2073cd7d076"
+    },
+    {
+      "path": ".claude/skills/scoped-approval-register/references/register-format.md",
+      "bytes": 7518,
+      "lf": 136,
+      "sha256": "ace0fb62e81df2e0a7a28822c67426d23cd0938ee6cfa7cfa6665c41e80521b6"
+    },
+    {
+      "path": ".claude/skills/screenshot-evidence-planner/SKILL.md",
+      "bytes": 10878,
+      "lf": 183,
+      "sha256": "b0910f9003a3479d7753f4da608dfd9b275ab8ca5d0157c7adb8e5d8813a8c1f"
+    },
+    {
+      "path": ".claude/skills/screenshot-evidence-planner/references/evidence-rules.md",
+      "bytes": 3389,
+      "lf": 66,
+      "sha256": "d7a06498ddfcb31798efa5d35f966121ec089b31882805b7bb4b73ac7b9f85d7"
+    },
+    {
+      "path": ".claude/skills/tech-spec-writer/SKILL.md",
+      "bytes": 10865,
+      "lf": 191,
+      "sha256": "cd1ee59dc53452de93404ceb2c1afdea49f64d2a1576dd1ba3621d93da3806f5"
+    },
+    {
+      "path": ".claude/skills/tech-spec-writer/references/tech-spec-sheet.md",
+      "bytes": 2935,
+      "lf": 72,
+      "sha256": "d7c7757942fc9a9e954fa241d595c95339b20f9c531eab8a00572550f4c99323"
+    },
+    {
+      "path": ".claude/skills/test-plan-designer/SKILL.md",
+      "bytes": 9662,
+      "lf": 158,
+      "sha256": "beba751405cd1cccc7dd1a3c5c9f26a833dc192e4ca08a8eb163d8db333713ba"
+    },
+    {
+      "path": ".claude/skills/test-plan-designer/references/qa-scenario-extensions.md",
+      "bytes": 2450,
+      "lf": 32,
+      "sha256": "16058d2721a57c3e74c8175b9c627307a50a3f5678e311a44cf51b599b32ef4b"
+    },
+    {
+      "path": ".claude/skills/test-plan-designer/references/test-plan-template.md",
+      "bytes": 5256,
+      "lf": 77,
+      "sha256": "d2561d221cf018875f5b044284e0dc0f3476a42741a7818af83d765896e70e53"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 25228,
+      "lf": 231,
+      "sha256": "02628bd7a224ec8dbb1534baccbc18fe1f805b225f644d49b0003b1d42d862fc"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 2687,
+      "lf": 17,
+      "sha256": "760afd104f1b058cfe08dac6cf2648c5391eace1db5e7cd86ee7ed6cd8cafb6c"
+    }
+  ]
+}

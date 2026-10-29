@@ -1,0 +1,15 @@
+{
+  "case": "src-missing-ref",
+  "source": "C:\\temp\\aegis-item1-fixtures\\src-missing-ref",
+  "target": "C:\\temp\\aegis-item1-fixtures\\tgt-src-missing-ref",
+  "exit_code": 21,
+  "stderr": "exit 21: missing source file: C:\\temp\\aegis-item1-fixtures\\src-missing-ref\\.claude\\skills\\scoped-approval-register\\references\\register-format.md\r\n",
+  "stdout": null,
+  "files_before": 6,
+  "files_after": 6,
+  "added": [],
+  "changed": [],
+  "unrelated_unchanged": true,
+  "record_before_sha256": null,
+  "record_after_sha256": null
+}
