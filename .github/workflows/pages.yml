@@ -192,6 +192,27 @@ jobs:
           if not contained:
               fail("retained site path escapes the repository checkout: " + SITE + " -> " + site_real)
 
+          # CP-12.7 guard: the manifest binds the retained bytes, so a symlinked
+          # manifest re-points that binding without moving a byte out of the tree;
+          # on the Linux runner a reparse point is a symlink, which lstat-based
+          # islink detects. Refuse a link at the manifest itself or at any component
+          # of its path, and a manifest that resolves outside its release directory.
+          manifest_parts = MANIFEST.split(os.sep)
+          for depth in range(1, len(manifest_parts)):
+              component = os.path.join(*manifest_parts[:depth])
+              if os.path.islink(component):
+                  fail("manifest path component is a symlink: " + component)
+          if os.path.islink(MANIFEST):
+              fail("manifest path is a symlink: " + MANIFEST)
+          manifest_real = os.path.realpath(MANIFEST)
+          release_real = os.path.realpath(ROOT)
+          try:
+              manifest_inside = os.path.commonpath([manifest_real, release_real]) == release_real
+          except ValueError:
+              manifest_inside = False
+          if not manifest_inside:
+              fail("manifest resolves outside its release directory: " + MANIFEST + " -> " + manifest_real)
+
           # Content gates copied verbatim from build mode. The manifest binds bytes,
           # not policy; these checks are repeated here so a matching manifest cannot
           # carry a CR byte or forbidden material past upload (plan section 3, step 4).
