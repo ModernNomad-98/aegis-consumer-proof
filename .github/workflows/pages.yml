@@ -296,6 +296,84 @@ jobs:
           print("content_gates_replayed release=%s files=%d cr_bytes=0 forbidden_material=0" % (RELEASE, len(recorded)))
           PY
 
+      # CP-21(B) freshness selector: a deploy from a non-main ref may publish only
+      # the release the live deployment already serves. main keeps the reviewed
+      # rollback path (either retained release). A refusal happens before upload.
+      - name: Select the freshness rule (live release must match, or ref is main)
+        env:
+          PAGES_BASE_URL: https://modernnomad-98.github.io/aegis-consumer-proof/
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, os, re, sys, urllib.error, urllib.request
+
+          RELEASE = os.environ.get("RELEASE", "")
+          REF = os.environ.get("GITHUB_REF", "")
+          BASE = os.environ.get("PAGES_BASE_URL", "").rstrip("/") + "/"
+          ALLOW = ["app.js", "index.html", "styles.css"]
+          TIMEOUT = 30
+
+          def refuse(reason, detail):
+              print("::error::freshness_selector_refused reason=%s %s" % (reason, detail))
+              sys.exit(1)
+
+          if RELEASE not in ("A", "B"):
+              refuse("unsupported_release", "release=" + RELEASE)
+          if REF == "refs/heads/main":
+              print("freshness_selector_allow reason=ref_is_main ref=%s selected_release=%s" % (REF, RELEASE))
+              sys.exit(0)
+          if not BASE.startswith("http"):
+              refuse("pages_base_url_invalid", "PAGES_BASE_URL=" + repr(os.environ.get("PAGES_BASE_URL", "")))
+
+          def retained_aggregate(release):
+              path = os.path.join("docs", "evidence", "releases", release, "manifest.txt")
+              try:
+                  raw = open(path, "rb").read()
+              except OSError as exc:
+                  refuse("retained_manifest_unreadable", "release=%s path=%s error=%s" % (release, path, exc))
+              if raw.startswith(b"\xef\xbb\xbf"):
+                  refuse("retained_manifest_malformed", "release=%s reason=byte_order_mark" % release)
+              if b"\r" in raw:
+                  refuse("retained_manifest_malformed", "release=%s reason=cr_byte" % release)
+              comments = [line for line in raw.decode("utf-8").splitlines() if line.startswith("#")]
+              match = re.fullmatch(r"# aggregate rows=(\d+) serialized_bytes=(\d+) sha256=([0-9a-f]{64})", comments[0]) if len(comments) == 1 else None
+              if not match or int(match.group(1)) != 3:
+                  refuse("retained_manifest_malformed", "release=%s reason=aggregate_row" % release)
+              return match.group(3)
+
+          def fetch(name, token):
+              url = BASE if name == "index.html" else BASE + name
+              request = urllib.request.Request(url + "?cp21selector=" + token,
+                                               headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
+              with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+                  if response.status != 200:
+                      raise OSError("HTTP " + str(response.status))
+                  return response.read()
+
+          token = os.environ.get("GITHUB_RUN_ID", "0") + "-" + os.environ.get("GITHUB_RUN_ATTEMPT", "1")
+          rows = []
+          try:
+              for name in ALLOW:
+                  data = fetch(name, token)
+                  rows.append((name, len(data), data.count(10), hashlib.sha256(data).hexdigest()))
+          except (OSError, urllib.error.URLError) as exc:
+              refuse("live_state_unreachable", "base=%s error=%s" % (BASE, exc))
+
+          rows.sort(key=lambda row: row[0].encode("utf-8"))
+          serialized = "".join("%s\t%d\t%d\t%s\n" % row for row in rows).encode("utf-8")
+          live_aggregate = hashlib.sha256(serialized).hexdigest()
+          recorded = {release: retained_aggregate(release) for release in ("A", "B")}
+          matched = sorted(release for release in recorded if recorded[release] == live_aggregate)
+          if len(matched) != 1:
+              refuse("live_state_indeterminate", "live_aggregate=%s live_serialized_bytes=%d matches=%s retained=%s" % (live_aggregate, len(serialized), ",".join(matched) or "none", ",".join("%s:%s" % (key, recorded[key]) for key in sorted(recorded))))
+          live_release = matched[0]
+          print("freshness_state ref=%s selected_release=%s live_release=%s live_aggregate=%s live_serialized_bytes=%d" % (REF, RELEASE, live_release, live_aggregate, len(serialized)))
+          if live_release == RELEASE:
+              print("freshness_selector_allow reason=selected_equals_live ref=%s selected_release=%s live_release=%s" % (REF, RELEASE, live_release))
+              sys.exit(0)
+          refuse("selected_release_differs_from_live", "ref=%s selected_release=%s live_release=%s live_aggregate=%s" % (REF, RELEASE, live_release, live_aggregate))
+          PY
+
       - name: Upload the verified retained bytes
         id: upload
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # actions/upload-pages-artifact v3
