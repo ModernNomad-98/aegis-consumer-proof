@@ -2,7 +2,7 @@
 
 Plan reference: RP-D-14. Release: B. Repository: ModernNomad-98/aegis-consumer-proof.
 
-Status: **content gates PASS; deployment NOT dispatched; release A remains live.**
+Status: **content gates PASS; deployment NOT dispatched; release A remains live.** *(State at the time of writing; later execution is recorded in the dated update in §6.)*
 
 This record states what has been proven by execution and what remains UNRUN. It does
 not authorize a deployment. See the authority line in section 8.
@@ -142,9 +142,46 @@ These were deliberately not executed. They are not "passed"; they are unexecuted
 - **Post-deploy checks are unrun**: served bytes equal to `M_B`, and a browser pass over
   the published page.
 - **Rollback and re-advance are unrun** (CP-20, CP-21). The rollback primitive is ready;
-  it has not been exercised.
+  it has not been exercised. *(Superseded 2026-10-29: both were later executed and both
+  PASS; see the dated update below.)*
 - **The B artifact expires `2027-01-27T01:41:50Z`.** After that, a rebuild is a new run and
   must be recorded as one; the committed bundle is unaffected.
+
+### Dated update — 2026-10-29: CP-20 and CP-21 executed after this record
+
+This note is appended, not substituted. It does not rewrite the record above: when this
+readiness record was written, no deploy dispatch for B had happened and CP-20/CP-21 were
+unrun. The later owner-authorized execution changed that state.
+
+- **CP-20 — PASS**, owner-run under the corrected pair protocol: the count-absent
+  observation was taken on release A, the count-returns observation on release B showed
+  `1 of 3 completed` (in `#count p`, `role=status`), and the reload check PASSed. The
+  verdict is recorded in ledger v5 at
+  `docs/evidence/aep3-item2-consumer-proof-20261029/` in `ModernNomad-98/Project-Aegis`.
+- **CP-21 — PASS**, owner decision CP-21=B, with the freshness selector merged to `main`
+  as `f3ec2cff` (`f3ec2cff2e77a4c87049b2d428ce7bc4f99fa228`). Under the owner-authorized
+  temporary Pages branch-policy change recorded in
+  `docs/evidence/CP-21-settings-change-20261029/`:
+  - **D1 fail-before** — run `40926181149` succeeded and accepted release A as deployment
+    `7420139651`.
+  - **D2 pass-after** — run `40926362502` was refused with
+    `freshness_selector_refused reason=selected_release_differs_from_live`; steps 6-8
+    were skipped, nothing was uploaded and nothing was published, and the served bytes
+    stayed release A.
+  - **Restore** — run `40926519791` succeeded and accepted release B as deployment
+    `7420187769`, restoring aggregate
+    `36bc4407514265db0bd0fcaa9dde87ad2db18373ed5646fd178ec97af5a9ba4a` byte-identically
+    to the pre-change snapshot.
+
+  The temporary branch policy was removed 2 min 6 s after it was added, inside the
+  60-minute limit, and the policy read back byte-identical to its before state; there was
+  no retry. The readings, run records and revert evidence are in
+  `docs/evidence/CP-21-settings-change-20261029/`.
+
+As of this update, release B has been published and is the live release; release A
+remains restorable from its committed bundle. The UNRUN list above remains the record of
+what had not been executed when this readiness record was written, not a statement about
+the later state.
 
 Provider state observed while writing this record: deployments **1** (release A's
 `7401326753`, status `success`), Pages builds **0**, Pages `status: null` with
@@ -178,6 +215,10 @@ Two limits are recorded rather than assumed. A failed B deploy does not unpublis
 keeps serving the last successful deployment, so a failed B leaves A live. And removing
 live content altogether is an unpublish/disable, which is a Pages settings change outside
 any release grant and needs its own authorization.
+
+A separate HIGH finding covers the R-EMPTY / teardown path: D-01 in
+`docs/evidence/consumer-readiness/drift-register.md` is **OWNER DECISION REQUIRED**, and no
+R-EMPTY, teardown or unpublish may proceed on SDP-1 item 4 alone.
 
 ## 8. Authority
 
