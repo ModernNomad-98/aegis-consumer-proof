@@ -104,6 +104,10 @@ These were deliberately not executed. They are not "passed"; they are unexecuted
 - **Post-deploy RV-3 checks are unrun**: URL returns 200, served bytes match the retained
   manifest, and a browser pass over the published page.
 
+The `github-pages` environment currently has one protection rule, a branch policy for
+`main`, and **no required reviewers**. The R-A gate is therefore procedural: what stops
+an unauthorized deploy is the owner's explicit answer, not environment protection.
+
 Provider state observed while writing this record: deployments **0**, Pages builds **0**,
 site URL **404**.
 
@@ -114,13 +118,26 @@ Nothing is deployed, so there is no live state to roll back today.
 The bytes that would be published are reproducible from two independent sources: the
 build artifact `12863007897` (retained until 2027-01-27) and the committed `site/` at
 candidate commit `8c5eaf0f4b852cc7456d0a69b4cf08fd241126f3`. Either can regenerate
-`manifest.txt` exactly.
+`manifest.txt` exactly. This is a source for re-deploying the *same* release A bytes; it
+is not an earlier release to fall back to.
 
-If a future deployment is authorized and must be undone: revert the bundle commit
-`5fcea3c2bda66ed9beedec82d09a7f953e6a69cc` and dispatch `mode=deploy` at a commit whose
-retained bundle verifies, or disable Pages for the repository. Both restore the current
-state (nothing served). A Pages settings change is a separate owner decision and is not
-covered by an R-A answer.
+Release A is the repository's **first publication**. There is no earlier bundle or
+earlier live state to restore:
+
+- **A failed deploy does not unpublish.** If `deploy-pages` does not succeed, the URL
+  keeps its prior state (404 today); GitHub Pages continues to serve the last successful
+  deployment.
+- **Reverting the bundle commit is not a rollback.** Reverting
+  `5fcea3c2bda66ed9beedec82d09a7f953e6a69cc` removes `docs/evidence/releases/A/` at the
+  new head, so the committed gate fails closed (`missing retained directory`) instead of
+  publishing older content.
+- **Only unpublishing returns the URL to 404.** Once a deployment succeeds, removing it
+  from live serving requires unpublishing or disabling Pages, a Pages settings change.
+  It is excluded from R-A and needs its own owner authorization.
+
+Approving R-A is therefore **not reversible by R-A**. It authorizes the first
+publication and the live state that follows; undoing that live state needs a separate
+owner decision outside this request.
 
 ## 8. Authority
 

@@ -7,7 +7,7 @@ An entry binds one file; if that file changes, its entry must be recomputed.
 
 | Artifact | SHA-256 | Bytes | Purpose |
 | --- | --- | --- | --- |
-| `docs/evidence/release-readiness/A.md` | `377308162f202781fef3c6590441ecf79b6b6c4d88af1d46649c9b5e317c3e2e` | 6605 | RV-3 readiness record for release A (RP-D-14): the eight required fields, known UNRUN, and the authority line stating that deployment requires the owner R-A answer. |
+| `docs/evidence/release-readiness/A.md` | `b1dea6310314c439b39b0f9665a087e3c4a540a0a77c440ec9621ae0ca3cd9c5` | 7613 | RV-3 readiness record for release A (RP-D-14): the eight required fields, known UNRUN, and the authority line stating that deployment requires the owner R-A answer. |
 
 The retained bundle is deliberately not hashed here. `docs/evidence/releases/A/manifest.txt`
 already binds the three retained files by byte count, LF count and SHA-256, and the
