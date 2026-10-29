@@ -2,6 +2,8 @@
 
 SHA-256 values here are computed over the exact committed bytes (LF endings, no BOM).
 An entry binds one file; if that file changes, its entry must be recomputed.
+Owner policies and decisions committed to this repository are registered here too, in the
+same form as evidence records.
 
 ## Release A
 
@@ -17,3 +19,9 @@ would create a second, weaker copy that could drift from the bytes it claims to 
 The verified aggregate is
 `12ad18e157ee0ed91ff174465d0adf65cca3430a6a29836d363b885c48bb867c` over 3 rows and
 251 serialized bytes, as recorded in `docs/evidence/release-readiness/A.md` section 4.
+
+## Owner decisions
+
+| Artifact | SHA-256 | Bytes | LF | Purpose |
+| --- | --- | --- | --- | --- |
+| `docs/evidence/owner-decisions/SDP-1.md` | `2ee5b85d15de225a9cfb39e72ae97bc1f2e6c978e3a35fe8ceaec9622cd9b0f1` | 5205 | 82 | Owner standing decision policy SDP-1, dated 2026-10-28, recorded as an owner instruction from the owner's session (not a GitHub comment): fail-closed timeout default; spec-question rule and A-13; licensing/vendoring; the conditional pre-grant for release steps R-B, R-RB1, R-RB2 and R-EMPTY; the trigger-scoped manual-only permission and its invocation log; the remainder that stays owner-only; and the unchanged evidence rule. |
